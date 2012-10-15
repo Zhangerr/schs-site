@@ -15,13 +15,13 @@
   </head>
   <body>
     <div class="top" style="width:100%;height:150px;background-color:rgb(220,220,220);padding-top:20px;">
-      <h1 style="margin:0px;margin-left:20px;">
-        a short mercurial tutorial
+      <h1 style="margin:0px;margin-left:20px;text-align:center;">
+        a (short) mercurial tutorial
       </h1>
-      <h5 style="margin-left:20px;">
+      <h5 style="margin-left:20px;text-align:center;">
         by Alex Zhang
       </h5>
-      <h6 style="margin-left:20px;">
+      <h6 style="margin-left:20px;text-align:center;">
         composed in <a href="http://notepad-plus-plus.org/">notepad++</a>
       </h6>
     </div>
@@ -32,6 +32,7 @@
           <ul class="nav nav-list well">
             <li class="nav-header">Navigation
             </li>
+			<li class="divider"></li>
             <li>
               <a href="#cl">Command Line</a>
             </li>
@@ -48,6 +49,7 @@
                 </li>
               </ul>
             </li>
+			<li class="divider"></li>
             <li class="">
               <a href="#gui">GUI</a>
             </li>
@@ -63,12 +65,14 @@
                   <a href="">Pulling</a>
                 </li>
               </ul>
+			  <li class="divider"></li>
+			  <li><a href="#appendix">Appendix</a></li>
             </li>
           </ul>
         </div>
         <div class="span9">
           <p>
-            I know many of you couldn't (or didn't) come to the meaning this Tuesday but what we basically did was a quick overview of how to collaborate on the website with mercurial (a source control system that keeps track of changes to files), i.e. how to download a local copy of the website (cloning) and commit one's changes (pushing). But since I realized most people won't remember how to do it from such brief explanation and that most people weren't present I decided just to write a quick guide/tutorial on using mercurial with some screenshots for you visual learners.
+			I know many of you couldn't (or didn't) come to the meaning this Tuesday but what we basically did was a quick overview of how to collaborate on the website with <a href="http://selenic.mercurial.com">mercurial</a> (a source control system that keeps track of changes to files), i.e. how to download a local copy of the website (cloning) and commit one's changes (pushing). But since I realized most people won't remember how to do it from such brief explanation and that most people weren't present I decided just to write a quick guide/tutorial on using mercurial with some screenshots for you visual learners.
           </p>
           <p>
             I'll be describing how to clone, commit, and pull two different ways
@@ -186,6 +190,15 @@ hg commit -m "added some new styles"</pre>
 		<hr />
 		<a id="gui"></a>
 		<h3>GUI Method</h3>
+		<hr />
+		<a id="appendix"></a>
+		<h3>Appendix</h3>
+		<h4>Useful Links:</h4>
+		<ul>
+		<li><a href="http://code.google.com/schs-site">http://code.google.com/schs-site</a> - The Google Code Repository</li>
+		<li><a href="http://hginit.com">http://hginit.com</a> - A much more in depth tutorial on mercurial</li>
+		
+		</ul>
         </div>
 		
       </div>
