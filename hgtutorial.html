@@ -44,12 +44,12 @@
                   <a href="#cl_commit">Committing &amp; Pushing</a>
                 </li>
                 <li>
-                  <a href="">Pulling</a>
+                  <a href="#cl_pulling">Pulling</a>
                 </li>
               </ul>
             </li>
             <li class="">
-              <a href="#">GUI</a>
+              <a href="#gui">GUI</a>
             </li>
             <li style="list-style: none">
               <ul class="nav nav-list">
@@ -94,6 +94,8 @@
             <li>
               <b>Pulling</b> is the opposite of a push -- you push your own changes but then you pull other people's changes then update to the new revision. This is the most vital step for collaboration: being able to download other people's work!
             </li>
+			<li>
+			Also note that a <b>repository</b> is just a fancy word for a database.</li>
           </ul>
           <p>
             And a quick note, none of this guide is a substitute for reading hginit.com, think of this more like a quick start/cheat sheet sort of thing.
@@ -174,8 +176,18 @@ hg commit -m "added some new styles"</pre>
 		
 		<p>So we have our changes committed, and now we need to push to google code. No problem, this is probably the easiest step ever. Just type</p>
 		<pre>hg push</pre>
-		<p>while your current directory is the repository.</p>
+		<p>while your current directory is the repository. When prompted for your password, <b>carefully type in your google code password given to you earlier from <a href="https://code.google.com/hosting/settings">here</a> </b>(must be signed to view).</p>
+		<p><span class="label label-info">Note</span> You can use your google account password for pushing instead of the complex generated one if you go to <a href="https://code.google.com/hosting/settings">here</a> and check this box: <img src="http://puu.sh/1f3Vb" alt="" /></p>
+		<p>If your push was successful, your changes should now be available to download from the google code server!</p>
+		<a id="cl_pulling"></a>
+		<h4>Pulling</h4>
+		<p>Pulling is probably the most vital step as it's what lets us collaborate. To pull, simply type <pre>hg pull</pre> and then <pre>hg update</pre> (you <strong>must</strong> update to actually have the changes). Sometimes there will be conflicts (i.e. your changes clash with the someone else's) but usually they can be resolved automatically; read <a href="hginit.com">http://hginit.com</a> to learn manually resolve conflicts.</p>
+		<p>If all goes well, you should have the latest version of the repository.</p>
+		<hr />
+		<a id="gui"></a>
+		<h3>GUI Method</h3>
         </div>
+		
       </div>
     </div>
   </body>
