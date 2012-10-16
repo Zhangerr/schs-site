@@ -72,7 +72,11 @@
         </div>
         <div class="span9">
           <p>
-			I know many of you couldn't (or didn't) come to the meaning this Tuesday but what we basically did was a quick overview of how to collaborate on the website with <a href="http://selenic.mercurial.com">mercurial</a> (a source control system that keeps track of changes to files), i.e. how to download a local copy of the website (cloning) and commit one's changes (pushing). But since I realized most people won't remember how to do it from such brief explanation and that most people weren't present I decided just to write a quick guide/tutorial on using mercurial with some screenshots for you visual learners.
+			I know many of you couldn't (or didn't) come to the meeting this Tuesday but what we basically did was a quick overview of how to collaborate on the website with <a href="http://selenic.mercurial.com">mercurial</a> (a source control system that keeps track of changes to files), i.e. how to download a local copy of the website (cloning) and commit one's changes (pushing).</p>
+			<p>A good question is <strong>why mercurial?</strong> Why go through all this effort on learning this software?</p>
+			<p>The primary reason is so we can <strong>collaborate</strong> on the website in an organized fashion, therefore enabling us to work simultaneously. Mercurial keeps track of the <strong>changes</strong> to files over time and lets us see <strong>who</strong> made that change. Think of it like savepoints in a game. You typically want to save everytime you make some progress. Same idea with mercurial. You can revert back to past versions at any time (like a game), and people people will be able to <strong>download</strong> your changes and vice versa.</p>
+			<p>So in essence if one of us makes changes the rest of us can see what was changed and download that change; and if anytime the need arise to view a past version we can easily do so.</p>
+			<p>I realized most people won't remember how to do it from such brief explanation and that most people weren't present I decided just to write a quick guide/tutorial on using mercurial with some screenshots for you visual learners.
           </p>
           <p>
             I'll be describing how to clone, commit, and pull two different ways
@@ -114,7 +118,7 @@
           </h3>
           <p>
             So first of all, basically in order to use command line you first need a terminal for your respective computer; for Macs that would just be built in terminal but for Windows you probably should install <a href="http://cygwin.com">Cygwin</a>. Cygwin is an alternative command line for windows. Using the actual windows command line <code>cmd</code> is possible but requires setting the path and more effort, and will not be covered here for brevity.
-          </p>After getting your terminal you now need to actually download mercurial. Unless you're using cygwin, you're going to want to download mercurial for your respective OS from <a href="http://mercurial.selenic.com/downloads">here</a>and install it. For Cygwin, simply install the "mercurial" package from the <code>setup.exe</code>to get hg (aka mercurial).<br>
+          </p>After getting your terminal you now need to actually download mercurial. Unless you're using cygwin, you're going to want to download mercurial for your respective OS from <a href="http://mercurial.selenic.com/downloads">here</a> and install it. For Cygwin, simply install the "mercurial" package from the <code>setup.exe</code> to get hg (aka mercurial).<br>
           <br>
           You then need to configure your terminal so you can directly type <code>hg</code> and get something like this:<br>
           <br>
@@ -138,7 +142,7 @@ basic commands:
 		  <a id="cl_cloning"></a>
           <h4>
             Cloning
-          </h4>Okay, to clone with the command line is really simple. Make sure you're signed into google (I should've already added you to the project) and go to the project web page at <a href="http://code.google.com/p/schs-site">here</a> and navigate to the <code>Source</code> tab. You should see a something that says<br>
+          </h4>Okay, to clone with the command line is really simple. Make sure you're signed into google (I should've already added you to the project) and go to the project web page at <a href="http://code.google.com/p/schs-site">here</a> then navigate to the <code>Source</code> tab. You should see a something that says<br>
           <br>
           <pre>
 Get a local copy of the schs-site repository with this command:
@@ -158,31 +162,65 @@ hg clone https://alexzhangh@code.google.com/p/schs-site/ schsite
 </pre>
 <p>if you don't want the default folder name.</p>
           <div class="alert alert-success">
-            <strong>You're set!</strong> Start making changes to your heart's content.
+           <i class="icon-ok-circle"></i>  <strong>You're set!</strong> Start making changes to your heart's content.
           </div>
 		  <a id="cl_commit"></a>
 		  <h4>Committing & Pushing</h4>
 		  <p>Alright, so you've made a couple of changes, poked around, etc. Now you're ready to make a logical saving point (think of saving your progress in a game) and/or share your 
 		  changes with others and the world!</p>
-		  <p>Committing is equally easy with the terminal. Say you cloned to a folder called <code>repo</code>. If you added <strong>any</strong> new files you first need to add them to mercurial like so</p>
-<pre>hg add newfile.html</pre>
-<p>You <i>must</i> do this so mercurial knows what files to track changes, it may seem silly but some projects have very large files and this prevents them from being automatically added, at the cost of small hassle.</p>
-<p><span class="label label-info">Note</span> You can add entire folders as well, not just individual files. Or use the * wildcard to indicate all files in the current directory.</p>
-		  <p>
-		  Now you just <code>cd</code> to the repository directory and execute</p>
-		  <pre>
-hg commit -m "added some new styles"</pre>
-<p>This will add commit your changes to the repository <strong>locally</strong> so you still need to <strong>push</strong> your work to google code.</p>
-          <div class="alert-block alert alert-warning">
+		  <p>Before executing any of these commands you should <code>cd</code> to the repository directory, which should look something like this (highly system dependent)</p>
+		  <pre>Alex@Alex-PC ~
+$ cd alex
+
+Alex@Alex-PC ~/alex
+$ cd desktop
+
+Alex@Alex-PC ~/alex/desktop
+$ cd schssite/repo
+
+Alex@Alex-PC ~/alex/desktop/schssite/repo
+$
+</pre>
+<p>Basically you are changing your current working directory to the repository folder (schsite/repo is where it's saved for me, notice the last line shows my current working directory. You <strong>must</strong> do this for any of the mercurial commands to work.</p>
+<div class="alert-block alert alert-warning">
 			<i class="icon-ok"></i> <strong>Tip:</strong> If you don't know what I mean by "cd" you may need to read this <a href="http://en.wikipedia.org/wiki/Cd_(command)">wikipedia article.</a> I can't explain everything in this tutorial
 			and part of learning computer-related stuff involves a lot of googling :)
           </div>
+		  <p>Before you commit, if you added <strong>any</strong> new files you first need to add them to mercurial like so</p>
+<pre>Alex@Alex-PC ~/alex/desktop/schssite/repo
+$ hg add hgtutorial.html
+</pre>
+<p>You <i>must</i> do this so mercurial knows what files to track changes; it may seem silly but some projects have very large files and this prevents them from being automatically added, at the cost of small hassle.</p>
+<p><span class="label label-info">Note</span> You can add entire folders as well, not just individual files. Or use the * wildcard to indicate all files in the current directory.</p>
+		  
+		  <p>Now that you've added all the new files you made, you can go ahead and commit like so:</p>
+		  <pre>
+Alex@Alex-PC ~/alex/desktop/schssite/repo
+$ hg commit -m "tutorial v2"</pre>
+<p>This will add commit your changes to the repository <strong>locally</strong> so you still need to <strong>push</strong> your work to google code.</p>
+          
 		
-		<p>So we have our changes committed, and now we need to push to google code. No problem, this is probably the easiest step ever. Just type</p>
+		<p>So we have our changes committed, and now we need to push to google code. No problem, this is the easiest step. Just type</p>
 		<pre>hg push</pre>
-		<p>while your current directory is the repository. When prompted for your password, <b>carefully type in your google code password given to you earlier from <a href="https://code.google.com/hosting/settings">here</a> </b>(must be signed to view).</p>
+		<p>while your current directory is the repository. You should see something like this</p>
+		<pre>Alex@Alex-PC ~/alex/desktop/schssite/repo
+$ hg push
+pushing to https://alexzhangh@code.google.com/p/schs-site/
+warning: code.google.com certificate with fingerprint 99:9b:2c:ac:bf:65:cc:74:61:df:ed:05:6d:f6:22:a9:d6:e1:ba:9f not verified (check hostfingerprints or web.cacerts config setting)
+searching for changes
+http authorization required
+realm: Google Code hg Repository
+user: alexzhangh
+password:
+warning: code.google.com certificate with fingerprint 99:9b:2c:ac:bf:65:cc:74:61:df:ed:05:6d:f6:22:a9:d6:e1:ba:9f not verified (check hostfingerprints or web.cacerts config setting)
+remote: Success.
+</pre>
+		<p>When prompted for your password, <b>carefully type in your google code password given to you earlier from <a href="https://code.google.com/hosting/settings">here</a> </b>(must be signed to view).</p>
 		<p><span class="label label-info">Note</span> You can use your google account password for pushing instead of the complex generated one if you go to <a href="https://code.google.com/hosting/settings">here</a> and check this box: <img src="http://puu.sh/1f3Vb" alt="" /></p>
 		<p>If your push was successful, your changes should now be available to download from the google code server!</p>
+		           <div class="alert alert-success">
+			<i class="icon-ok-circle"></i> <strong>You're set!</strong> Now everyone else will be able to download your changes.
+          </div>
 		<a id="cl_pulling"></a>
 		<h4>Pulling</h4>
 		<p>Pulling is probably the most vital step as it's what lets us collaborate. To pull, simply type <pre>hg pull</pre> and then <pre>hg update</pre> (you <strong>must</strong> update to actually have the changes). Sometimes there will be conflicts (i.e. your changes clash with the someone else's) but usually they can be resolved automatically; read <a href="hginit.com">http://hginit.com</a> to learn manually resolve conflicts.</p>
@@ -190,12 +228,16 @@ hg commit -m "added some new styles"</pre>
 		<hr />
 		<a id="gui"></a>
 		<h3>GUI Method</h3>
+		<p>
+		All of the GUI tutorial is for windows only, unfortunately. You will need to download and install TortoiseHg to follow along with the instuctions and screenshots.
+		<h4>&lt;under construction&gt;</h4>
+		</p>
 		<hr />
 		<a id="appendix"></a>
 		<h3>Appendix</h3>
 		<h4>Useful Links:</h4>
 		<ul>
-		<li><a href="http://code.google.com/p/schs-site">http://code.google.com/schs-site</a> - The Google Code Repository</li>
+		<li><a href="http://code.google.com/p/schs-site">http://code.google.com/p/schs-site</a> - The Google Code Repository</li>
 		<li><a href="http://hginit.com">http://hginit.com</a> - A much more in depth tutorial on mercurial</li>
 		
 		</ul>
