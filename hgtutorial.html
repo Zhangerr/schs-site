@@ -12,11 +12,11 @@
       <link rel="stylesheet" href="css/bootstrap-responsive.min.css" type="text/css" />
       <link href="css/prettify.css" type="text/css" rel="stylesheet" />
       <script type="text/javascript" src="js/prettify.js"></script>
-	  <style>
-	  img {
-	  margin-bottom:20px;
-	  }
-	  </style>
+      <style>
+         img {
+         margin-bottom:20px;
+         }
+      </style>
    </head>
    <body onload="prettyPrint()">
       <div class="top" style="width:100%;height:150px;background-color:rgb(220,220,220);padding-top:20px;">
@@ -33,8 +33,71 @@
       <div class="separator" style="width:100%;height:30px;background-color:rgb(70,130,180);margin-bottom:50px;box-shadow:0px 5px 3px #888;"></div>
       <div class="container-fluid">
          <div class="row-fluid">
-            <div class="span3">
-               <ul class="nav nav-list well">
+         
+            <div class="span12">
+               <div class="tabbable">
+                  <!-- Only required for left/right tabs -->
+                  <ul class="nav nav-tabs">
+                     <li class="active"><a href="#tab1" data-toggle="tab">Introduction</a></li>
+                     <li><a href="#tab2" data-toggle="tab">Command Line Method</a></li>
+                     <li><a href="#tab3" data-toggle="tab">GUI Method</a></li>
+                  </ul>
+                  <div class="tab-content">
+                     <div class="tab-pane active" id="tab1">
+					 <div id="row-fluid">
+					 
+						<div class="span12">
+                        <section id="intro">
+                           <p>
+                              I know many of you couldn't (or didn't) come to the meeting this Tuesday but what we basically did was a quick overview of how to collaborate on the website with <a href="http://selenic.mercurial.com">mercurial</a> (a source control system that keeps track of changes to files), i.e. how to download a local copy of the website (cloning) and commit one's changes (pushing).
+                           </p>
+                           <p>A good question is <strong>why mercurial?</strong> Why go through all this effort on learning this software?</p>
+                           <p>The primary reason is so we can <strong>collaborate</strong> on the website in an organized fashion, therefore enabling us to work simultaneously. Mercurial keeps track of the <strong>changes</strong> to files over time and lets us see <strong>who</strong> made that change. Think of it like savepoints in a game. You typically want to save everytime you make some progress. Same idea with mercurial. You can revert back to past versions at any time (like a game), and people people will be able to <strong>download</strong> your changes and vice versa.</p>
+                           <p>So in essence if one of us makes changes the rest of us can see what was changed and download that change; and if anytime the need arise to view a past version we can easily do so.</p>
+                           <p>I realized most people won't remember how to do it from such brief explanation and that most people weren't present I decided just to write a quick guide/tutorial on using mercurial with some screenshots for you visual learners.
+                           </p>
+                           <p>
+                              I'll be describing how to clone, commit, and pull two different ways
+                           </p>
+                           <ul>
+                              <li>
+                                 <b>Command line</b>, which is more powerful and flexible but has a steeper learning curve (which I personally use and recommend but will only briefly go over)
+                              </li>
+                              <li>
+                                 <b>Graphical</b>, which is much more intuitive but ultimately slower.
+                              </li>
+                           </ul>
+                           <p>
+                              And for clarity's sake, let me define what exactly cloning, committing, and pulling are.
+                           </p>
+                           <ul>
+                              <li>
+                                 <b>Cloning</b> is as the name implies -- you make a copy of the remote repository, a fancy word for database, on your local machine (computer). In this case, we'll be cloning the website repository from the google code repository so we can collaborate on it.
+                              </li>
+                              <li>
+                                 <b>Committing</b> is when you save the changes you made to the site files and store it as a logical revision, which is basically a save point of the file that can be restored anytime. With mercurial, you commit locally (onto your own computer opposed to a server) but then you <strong>push</strong> your commits to the master server (in this case google code). You will commit the changes you make and push them to the google code repository.
+                              </li>
+                              <li>
+                                 <b>Pulling</b> is the opposite of a push -- you push your own changes but then you pull other people's changes then update to the new revision. This is the most vital step for collaboration: being able to download other people's work!
+                              </li>
+                              <li>
+                                 Also note that a <b>repository</b> is just a fancy word for a database.
+                              </li>
+                           </ul>
+                           <p>
+                              And a quick note, none of this guide is a substitute for reading hginit.com, think of this more like a quick start/cheat sheet sort of thing.
+                           </p>
+                           <p>
+                              So without further ado, select your method on the tabs above. I highly recommend you read the command line one though cause it has some additional information.
+                           </p>
+                        </section>
+						</div>
+						</div>
+                     </div>
+                     <div class="tab-pane" id="tab2">
+					 <div class="row-fluid">
+					 <div class="span3"> 
+               <ul class="nav nav-list well" >
                   <li class="nav-header">Navigation
                   </li>
                   <li class="divider"></li>
@@ -54,7 +117,157 @@
                         </li>
                      </ul>
                   </li>
+                                   
                   <li class="divider"></li>
+                  <li><a href="#appendix">Appendix</a></li>
+                  </li>
+               </ul>
+            </div>
+					 <div class="span9">
+                        <a id="cl"></a>
+                        <section id="commandline">
+                           <h3>
+                              The Command Line Method
+                           </h3>
+                           <p>
+                              So first of all, basically in order to use command line you first need a terminal for your respective computer; for Macs that would just be built in terminal but for Windows you probably should install <a href="http://cygwin.com">Cygwin</a>. Cygwin is an alternative command line for windows. Using the actual windows command line <code>cmd</code> is possible but requires setting the path and more effort, and will not be covered here for brevity.
+                           </p>
+                           After getting your terminal you now need to actually download mercurial. Unless you're using cygwin, you're going to want to download mercurial for your respective OS from <a href="http://mercurial.selenic.com/downloads">here</a> and install it. For Cygwin, simply install the "mercurial" package from the <code>setup.exe</code> to get hg (aka mercurial).<br />
+                           <br />
+                           You then need to configure your terminal so you can directly type <code>hg</code> and get something like this:<br />
+                           <br />
+                           <pre class="prettyprint linenums">
+Alex@Alex-PC ~
+$ hg
+Mercurial Distributed SCM
+
+basic commands:
+
+ add        add the specified files on the next commit
+ annotate   show changeset information by line for each file
+ ...
+</pre>
+                           <p>
+                              Unfortunately, configuring whatever terminal you use to do this is beyond the scope of this tutorial but 10 minutes or so on Google should be more than enough time to find out how.
+                           </p>
+                           <p>
+                              Configuring the terminal is the hardest part; the rest of the steps are comparatively easy.
+                           </p>
+                           <section id="cl_cloning">
+                              <a id="cl_cloning"></a>
+                              <h4>
+                                 Cloning
+                              </h4>
+                              Okay, to clone with the command line is really simple. Make sure you're signed into google (I should've already added you to the project) and go to the project web page at <a href="http://code.google.com/p/schs-site">here</a> then navigate to the <code>Source</code> tab. You should see a something that says<br />
+                              <br />
+                              <pre class="prettyprint linenums">
+Get a local copy of the schs-site repository with this command:
+
+hg clone https://alexzhangh@code.google.com/p/schs-site/ 
+
+To push your changes, authenticate with your Google Account and your generated googlecode.com password.
+</pre>
+                              Copy and paste the command into your terminal and run it.
+                              <div class="alert-block alert">
+                                 <i class="icon-warning-sign"></i> <strong>Warning!</strong> Be sure you don't copy and paste from this tutorial and use YOUR personal link. Note how the example says "alexzhangh@code.google.com," it is specifically for me. Yours should have your google account name in front of the @.
+                              </div>
+                              <p>
+                                 Optionally, you can add a folder name as the last parameter like this
+                              </p>
+                              <pre class="prettyprint linenums">
+hg clone https://alexzhangh@code.google.com/p/schs-site/ schsite
+</pre>
+                              <p>if you don't want the default folder name.</p>
+                              <div class="alert alert-success">
+                                 <i class="icon-ok-circle"></i>  <strong>You're set!</strong> Start making changes to your heart's content.
+                              </div>
+                           </section>
+                           <section id="cl_commit">
+                              <a id="cl_commit"></a>
+                              <h4>Committing & Pushing</h4>
+                              <p>Alright, so you've made a couple of changes, poked around, etc. Now you're ready to make a logical saving point (think of saving your progress in a game) and/or share your 
+                                 changes with others and the world!
+                              </p>
+                              <p>Before executing any of these commands you should <code>cd</code> to the repository directory, which should look something like this (highly system dependent)</p>
+                              <pre class="prettyprint linenums">Alex@Alex-PC ~
+$ cd alex
+
+Alex@Alex-PC ~/alex
+$ cd desktop
+
+Alex@Alex-PC ~/alex/desktop
+$ cd schssite/repo
+
+Alex@Alex-PC ~/alex/desktop/schssite/repo
+$
+</pre>
+                              <p>Basically you are changing your current working directory to the repository folder (schsite/repo is where it's saved for me, notice the last line shows my current working directory. You <strong>must</strong> do this for any of the mercurial commands to work.</p>
+                              <div class="alert-block alert alert-warning">
+                                 <i class="icon-ok"></i> <strong>Tip:</strong> If you don't know what I mean by "cd" you may need to read this <a href="http://en.wikipedia.org/wiki/Cd_(command)">wikipedia article.</a> I can't explain everything in this tutorial
+                                 and part of learning computer-related stuff involves a lot of googling :)
+                              </div>
+                              <p>Before you commit, if you added <strong>any</strong> new files you first need to add them to mercurial like so</p>
+                              <pre class="prettyprint linenums">Alex@Alex-PC ~/alex/desktop/schssite/repo
+$ hg add hgtutorial.html
+</pre>
+                              <p>You <i>must</i> do this so mercurial knows what files to track changes; it may seem silly but some projects have very large files and this prevents them from being automatically added, at the cost of small hassle. And besides, sometimes you just want a file not to be tracked if it's always the same or you don't want others seeing it.</p>
+                              <p><span class="label label-info">Note</span> You can add entire folders as well, not just individual files. Or use the * wildcard to indicate all files in the current directory. An example:</p>
+                              <pre class="prettyprint linenums">Alex@Alex-PC ~/alex/desktop/schssite/repo
+$ hg add css
+adding css/prettify.css
+
+Alex@Alex-PC ~/alex/desktop/schssite/repo
+$ hg add js
+adding js/prettify.js
+</pre>
+                              <p>Now that you've added all the new files you made, you can go ahead and commit like so:</p>
+                              <pre class="prettyprint linenums">
+Alex@Alex-PC ~/alex/desktop/schssite/repo
+$ hg commit -m "tutorial v2"</pre>
+                              <p>After the <code>-m</code> in quotes is the commit message, this will be the information associated with your commit. Make sure you type something meaningful detailing what you've changed/done. This will add commit your changes to the repository <strong>locally</strong> so you still need to <strong>push</strong> your work to google code.</p>
+                              <p>So we have our changes committed, and now we need to push to google code. No problem, this is the easiest step. Just type</p>
+                              <pre class="prettyprint linenums">hg push</pre>
+                              <p>while your current directory is the repository. You should see something like this</p>
+                              <pre class="prettyprint linenums">Alex@Alex-PC ~/alex/desktop/schssite/repo
+$ hg push
+pushing to https://alexzhangh@code.google.com/p/schs-site/
+warning: code.google.com certificate with fingerprint 99:9b:2c:ac:bf:65:cc:74:61:df:ed:05:6d:f6:22:a9:d6:e1:ba:9f not verified (check hostfingerprints or web.cacerts config setting)
+searching for changes
+http authorization required
+realm: Google Code hg Repository
+user: alexzhangh
+password:
+warning: code.google.com certificate with fingerprint 99:9b:2c:ac:bf:65:cc:74:61:df:ed:05:6d:f6:22:a9:d6:e1:ba:9f not verified (check hostfingerprints or web.cacerts config setting)
+remote: Success.
+</pre>
+                              <p>When prompted for your password, <b>carefully type in your google code password given to you earlier from <a href="https://code.google.com/hosting/settings">here</a> </b>(must be signed to view).</p>
+                              <p><span class="label label-info">Note</span> You can use your google account password for pushing instead of the complex generated one if you go to <a href="https://code.google.com/hosting/settings">here</a> and check this box: <img src="http://puu.sh/1f3Vb" alt="" /></p>
+                              <p>If your push was successful, your changes should now be available to download from the google code server!</p>
+                              <div class="alert alert-success">
+                                 <i class="icon-ok-circle"></i> <strong>You're set!</strong> Now everyone else will be able to download your changes.
+                              </div>
+                           </section>
+                           <section id="cl_pulling">
+                              <a id="cl_pulling"></a>
+                              <h4>Pulling</h4>
+                              <p>Pulling is probably the most vital step as it's what lets us collaborate. To pull, simply type 
+                              <pre class="prettyprint linenums">hg pull</pre>
+                              and then 
+                              <pre class="prettyprint linenums">hg update</pre>
+                              (you <strong>must</strong> update to actually have the changes). Sometimes there will be conflicts (i.e. your changes clash with the someone else's) but usually they can be resolved automatically; read <a href="hginit.com">http://hginit.com</a> to learn manually resolve conflicts.</p>
+                              <p>If all goes well, you should have the latest version of the repository.</p>
+                           </section>
+                        </section>
+						</div>
+						</div>
+                     </div>
+                     <div class="tab-pane" id="tab3">
+					 <div class="row-fluid">
+					 <div class="span3"> 
+               <ul class="nav nav-list well" >
+                  <li class="nav-header">Navigation
+                  </li>
+                  <li class="divider"></li>                 
                   <li class="">
                      <a href="#gui">GUI</a>
                   </li>
@@ -75,257 +288,84 @@
                   </li>
                </ul>
             </div>
-            <div class="span9">
-               <section id="intro">
-                  <p>
-                     I know many of you couldn't (or didn't) come to the meeting this Tuesday but what we basically did was a quick overview of how to collaborate on the website with <a href="http://selenic.mercurial.com">mercurial</a> (a source control system that keeps track of changes to files), i.e. how to download a local copy of the website (cloning) and commit one's changes (pushing).
-                  </p>
-                  <p>A good question is <strong>why mercurial?</strong> Why go through all this effort on learning this software?</p>
-                  <p>The primary reason is so we can <strong>collaborate</strong> on the website in an organized fashion, therefore enabling us to work simultaneously. Mercurial keeps track of the <strong>changes</strong> to files over time and lets us see <strong>who</strong> made that change. Think of it like savepoints in a game. You typically want to save everytime you make some progress. Same idea with mercurial. You can revert back to past versions at any time (like a game), and people people will be able to <strong>download</strong> your changes and vice versa.</p>
-                  <p>So in essence if one of us makes changes the rest of us can see what was changed and download that change; and if anytime the need arise to view a past version we can easily do so.</p>
-                  <p>I realized most people won't remember how to do it from such brief explanation and that most people weren't present I decided just to write a quick guide/tutorial on using mercurial with some screenshots for you visual learners.
-                  </p>
-                  <p>
-                     I'll be describing how to clone, commit, and pull two different ways
-                  </p>
-                  <ul>
-                     <li>
-                        <b>Command line</b>, which is more powerful and flexible but has a steeper learning curve (which I personally use and recommend but will only briefly go over)
-                     </li>
-                     <li>
-                        <b>Graphical</b>, which is much more intuitive but ultimately slower.
-                     </li>
-                  </ul>
-                  <p>
-                     And for clarity's sake, let me define what exactly cloning, committing, and pulling are.
-                  </p>
-                  <ul>
-                     <li>
-                        <b>Cloning</b> is as the name implies -- you make a copy of the remote repository, a fancy word for database, on your local machine (computer). In this case, we'll be cloning the website repository from the google code repository so we can collaborate on it.
-                     </li>
-                     <li>
-                        <b>Committing</b> is when you save the changes you made to the site files and store it as a logical revision, which is basically a save point of the file that can be restored anytime. With mercurial, you commit locally (onto your own computer opposed to a server) but then you <strong>push</strong> your commits to the master server (in this case google code). You will commit the changes you make and push them to the google code repository.
-                     </li>
-                     <li>
-                        <b>Pulling</b> is the opposite of a push -- you push your own changes but then you pull other people's changes then update to the new revision. This is the most vital step for collaboration: being able to download other people's work!
-                     </li>
-                     <li>
-                        Also note that a <b>repository</b> is just a fancy word for a database.
-                     </li>
-                  </ul>
-                  <p>
-                     And a quick note, none of this guide is a substitute for reading hginit.com, think of this more like a quick start/cheat sheet sort of thing.
-                  </p>
-                  <p>
-                     So without further ado:
-                  </p>
-               </section>
-               <hr />
-               <a id="cl"></a>
-               <section id="commandline">
-                  <h3>
-                     The Command Line Method
-                  </h3>
-                  <p>
-                     So first of all, basically in order to use command line you first need a terminal for your respective computer; for Macs that would just be built in terminal but for Windows you probably should install <a href="http://cygwin.com">Cygwin</a>. Cygwin is an alternative command line for windows. Using the actual windows command line <code>cmd</code> is possible but requires setting the path and more effort, and will not be covered here for brevity.
-                  </p>
-                  After getting your terminal you now need to actually download mercurial. Unless you're using cygwin, you're going to want to download mercurial for your respective OS from <a href="http://mercurial.selenic.com/downloads">here</a> and install it. For Cygwin, simply install the "mercurial" package from the <code>setup.exe</code> to get hg (aka mercurial).<br />
-                  <br />
-                  You then need to configure your terminal so you can directly type <code>hg</code> and get something like this:<br />
-                  <br />
-                  <pre class="prettyprint linenums">
-Alex@Alex-PC ~
-$ hg
-Mercurial Distributed SCM
-
-basic commands:
-
- add        add the specified files on the next commit
- annotate   show changeset information by line for each file
- ...
-</pre>
-                  <p>
-                     Unfortunately, configuring whatever terminal you use to do this is beyond the scope of this tutorial but 10 minutes or so on Google should be more than enough time to find out how.
-                  </p>
-                  <p>
-                     Configuring the terminal is the hardest part; the rest of the steps are comparatively easy.
-                  </p>
-                  <section id="cl_cloning">
-                     <a id="cl_cloning"></a>
-                     <h4>
-                        Cloning
-                     </h4>
-                     Okay, to clone with the command line is really simple. Make sure you're signed into google (I should've already added you to the project) and go to the project web page at <a href="http://code.google.com/p/schs-site">here</a> then navigate to the <code>Source</code> tab. You should see a something that says<br />
-                     <br />
-                     <pre class="prettyprint linenums">
-Get a local copy of the schs-site repository with this command:
-
-hg clone https://alexzhangh@code.google.com/p/schs-site/ 
-
-To push your changes, authenticate with your Google Account and your generated googlecode.com password.
-</pre>
-                     Copy and paste the command into your terminal and run it.
-                     <div class="alert-block alert">
-                        <i class="icon-warning-sign"></i> <strong>Warning!</strong> Be sure you don't copy and paste from this tutorial and use YOUR personal link. Note how the example says "alexzhangh@code.google.com," it is specifically for me. Yours should have your google account name in front of the @.
+					 <div class="span9">
+                        <a id="gui"></a>
+                        <section class="gui">
+                           <h3>GUI Method</h3>
+                           <p>
+                              You will need to download and install <a href="http://tortoisehg.bitbucket.org/download/index.html">TortoiseHg</a> to follow along with the instuctions and screenshots.		
+                           </p>
+                           <p>TortoiseHg is mainly for Windows based systems but there are unstable Mac and Linux versions available for download (not sure how well they work).</p>
+                           <section id="gui_cloning">
+                              <a href="" id="gui_cloning"></a>
+                              <h4>Cloning</h4>
+                              <p>First of all you need to make a new folder that will be the home of the repository(hopefully you know how to do that...). Then right-click the folder for the context menu. Select the <code>TortoiseHg</code> submenu and select Clone like so -</p>
+                              <img src="http://i.imm.io/I67i.jpeg" alt="" /> 
+                              <p>Copy the link given at <a href="http://code.google.com/p/schs-site/source/checkout">here</a> (make sure you're signed into your google account, it should display your own email rather than mine). The area you should be copying from looks like this:</p>
+                              <img src="http://puu.sh/1flBy" alt="" /> 
+                              <p>Your clone window should look like this</p>
+                              <img src="http://puu.sh/1flCT" alt="" /> 
+                              <p>Hit clone and the window should exit by itself, and the directory you right clicked on should have a copy of the site in it! </p>
+                              <div class="alert alert-success">
+                                 <i class="icon-ok-circle"></i>  <strong>That's it!</strong> Make all the changes you want.
+                              </div>
+                           </section>
+                           <section id="gui_commit">
+                              <a href="" id="gui_commit"></a>
+                              <h4>Committing &amp; Pushing</h4>
+                              <p>To commit just right click the folder you cloned into and hit <code>Hg Commit</code>:</p>
+                              <img src="http://puu.sh/1flHC" alt="" />
+                              <p>After your in the commit window, it should list files that had changes done to theml; in this screenshot I changed index.html so it's listed as blue with a "M" standing for modified.</p>
+                              <img src="http://puu.sh/1flIL" alt="" />
+                              <p>Notice how I have added a new file, however. The file is pink and if you want mercurial to track and commit it you must check the tick box on the left of it, like so.</p>
+                              <img src="http://puu.sh/1flLa" alt="" /> 
+                              <p><span class="label label-info">Note</span> You must check the boxes of any files you've added and want tracked. Sometimes you want to exclude files from being tracked, which is why manually choosing is required.</p>
+                              <p>Make sure you type a meaningful commit message in the top right including what you changed. In this case, I made the site more hipster :)</p>
+                              <img src="http://puu.sh/1flR0" alt="" />
+                              <p>The first time you commit, mercurial will pop up with a message saying you need to "identify yourself to mercurial."</p>
+                              <img src="http://puu.sh/1flSk" alt="" />
+                              <p>In the subsequent window that pops up just type your full name and email under username like so:</p>
+                              <img src="http://puu.sh/1flSP" alt="" />
+                              <p><span class="label label-info">Note</span> Usually usernames are in the format <code>FullName &lt;email&gt;</code> as seen in the screenshot, but you can do whatever you want.</p>
+                              <p>Leave everything else the same and hit ok. The commit should now succeed.</p>
+                              <p>Okay, now that you commited you want to push, i.e. make your changes available to others. Right click the folder again and this time go under <code>TortoiseHg &gt; Synchronize</code></p>
+                              <img src="http://i.imm.io/I6i3.png" alt="" /> 
+                              <p>Click on this icon to push.</p>
+                              <img src="http://i.imm.io/I6iB.png" alt="" />
+                              <p>There should be a confirmation window (hit yes) and after a bit you will prompted for your password</p>
+                              <img src="http://puu.sh/1fmaJ" alt="" />
+                              <p>When prompted for your password, <b>carefully type in your google code password given to you earlier from <a href="https://code.google.com/hosting/settings">here</a> </b>(must be signed to view).</p>
+                              <p><span class="label label-info">Note</span> You can use your google account password for pushing instead of the complex generated one if you go to <a href="https://code.google.com/hosting/settings">here</a> and check this box: <img src="http://puu.sh/1f3Vb" alt="" /></p>
+                              <p>Afterwards, the status bar should say the push succeeded.</p>
+                              <div class="alert alert-success">
+                                 <i class="icon-ok-circle"></i>  <strong>Ok!</strong> Now just wait for everyone else to see your changes.
+                              </div>
+                           </section>
+                           <section id="gui_pulling">
+                              <a href="" id="gui_pulling"></a>
+                              <h4>Pulling</h4>
+                           </section>
+                           <p>Go back to synchronize option as mentioned above.</p>
+                           <img src="http://i.imm.io/I6i3.png" alt="" /> 
+                           <p>Hit the "Post Pull:None" button and change it to "Update - pull, then try to update" like so and tick the last checkbox: </p>
+                           <img src="http://puu.sh/1fmsa" alt="" />
+                           <p>Now, hit this button to pull and update:</p>
+                           <img src="http://i.imm.io/I6jG.png" alt="" />
+                           <p><span class="label label-important">Errata</span> Don't how the screenshot says "post pull:none", that's a mistake</p>
+                           <p>The bottom of the window (after the command finishes running) should say something like this -</p>
+                           <img src="http://puu.sh/1fmsE" alt="" />
+                           <div class="alert alert-success">
+                              <i class="icon-ok-circle"></i>  <strong>Congradulations!</strong> You pulled and updated successfully.
+                           </div>
+                        </section>
+						</div>
+						</div>
                      </div>
-                     <p>
-                        Optionally, you can add a folder name as the last parameter like this
-                     </p>
-                     <pre class="prettyprint linenums">
-hg clone https://alexzhangh@code.google.com/p/schs-site/ schsite
-</pre>
-                     <p>if you don't want the default folder name.</p>
-                     <div class="alert alert-success">
-                        <i class="icon-ok-circle"></i>  <strong>You're set!</strong> Start making changes to your heart's content.
-                     </div>
-                  </section>
-                  <section id="cl_commit">
-                     <a id="cl_commit"></a>
-                     <h4>Committing & Pushing</h4>
-                     <p>Alright, so you've made a couple of changes, poked around, etc. Now you're ready to make a logical saving point (think of saving your progress in a game) and/or share your 
-                        changes with others and the world!
-                     </p>
-                     <p>Before executing any of these commands you should <code>cd</code> to the repository directory, which should look something like this (highly system dependent)</p>
-                     <pre class="prettyprint linenums">Alex@Alex-PC ~
-$ cd alex
-
-Alex@Alex-PC ~/alex
-$ cd desktop
-
-Alex@Alex-PC ~/alex/desktop
-$ cd schssite/repo
-
-Alex@Alex-PC ~/alex/desktop/schssite/repo
-$
-</pre>
-                     <p>Basically you are changing your current working directory to the repository folder (schsite/repo is where it's saved for me, notice the last line shows my current working directory. You <strong>must</strong> do this for any of the mercurial commands to work.</p>
-                     <div class="alert-block alert alert-warning">
-                        <i class="icon-ok"></i> <strong>Tip:</strong> If you don't know what I mean by "cd" you may need to read this <a href="http://en.wikipedia.org/wiki/Cd_(command)">wikipedia article.</a> I can't explain everything in this tutorial
-                        and part of learning computer-related stuff involves a lot of googling :)
-                     </div>
-                     <p>Before you commit, if you added <strong>any</strong> new files you first need to add them to mercurial like so</p>
-                     <pre class="prettyprint linenums">Alex@Alex-PC ~/alex/desktop/schssite/repo
-$ hg add hgtutorial.html
-</pre>
-                     <p>You <i>must</i> do this so mercurial knows what files to track changes; it may seem silly but some projects have very large files and this prevents them from being automatically added, at the cost of small hassle. And besides, sometimes you just want a file not to be tracked if it's always the same or you don't want others seeing it.</p>
-                     <p><span class="label label-info">Note</span> You can add entire folders as well, not just individual files. Or use the * wildcard to indicate all files in the current directory. An example:</p>
-                     <pre class="prettyprint linenums">Alex@Alex-PC ~/alex/desktop/schssite/repo
-$ hg add css
-adding css/prettify.css
-
-Alex@Alex-PC ~/alex/desktop/schssite/repo
-$ hg add js
-adding js/prettify.js
-</pre>
-                     <p>Now that you've added all the new files you made, you can go ahead and commit like so:</p>
-                     <pre class="prettyprint linenums">
-Alex@Alex-PC ~/alex/desktop/schssite/repo
-$ hg commit -m "tutorial v2"</pre>
-                     <p>After the <code>-m</code> in quotes is the commit message, this will be the information associated with your commit. Make sure you type something meaningful detailing what you've changed/done. This will add commit your changes to the repository <strong>locally</strong> so you still need to <strong>push</strong> your work to google code.</p>
-                     <p>So we have our changes committed, and now we need to push to google code. No problem, this is the easiest step. Just type</p>
-                     <pre class="prettyprint linenums">hg push</pre>
-                     <p>while your current directory is the repository. You should see something like this</p>
-                     <pre class="prettyprint linenums">Alex@Alex-PC ~/alex/desktop/schssite/repo
-$ hg push
-pushing to https://alexzhangh@code.google.com/p/schs-site/
-warning: code.google.com certificate with fingerprint 99:9b:2c:ac:bf:65:cc:74:61:df:ed:05:6d:f6:22:a9:d6:e1:ba:9f not verified (check hostfingerprints or web.cacerts config setting)
-searching for changes
-http authorization required
-realm: Google Code hg Repository
-user: alexzhangh
-password:
-warning: code.google.com certificate with fingerprint 99:9b:2c:ac:bf:65:cc:74:61:df:ed:05:6d:f6:22:a9:d6:e1:ba:9f not verified (check hostfingerprints or web.cacerts config setting)
-remote: Success.
-</pre>
-                     <p>When prompted for your password, <b>carefully type in your google code password given to you earlier from <a href="https://code.google.com/hosting/settings">here</a> </b>(must be signed to view).</p>
-                     <p><span class="label label-info">Note</span> You can use your google account password for pushing instead of the complex generated one if you go to <a href="https://code.google.com/hosting/settings">here</a> and check this box: <img src="http://puu.sh/1f3Vb" alt="" /></p>
-                     <p>If your push was successful, your changes should now be available to download from the google code server!</p>
-                     <div class="alert alert-success">
-                        <i class="icon-ok-circle"></i> <strong>You're set!</strong> Now everyone else will be able to download your changes.
-                     </div>
-                  </section>
-                  <section id="cl_pulling">
-                     <a id="cl_pulling"></a>
-                     <h4>Pulling</h4>
-                     <p>Pulling is probably the most vital step as it's what lets us collaborate. To pull, simply type 
-                     <pre class="prettyprint linenums">hg pull</pre>
-                     and then 
-                     <pre class="prettyprint linenums">hg update</pre>
-                     (you <strong>must</strong> update to actually have the changes). Sometimes there will be conflicts (i.e. your changes clash with the someone else's) but usually they can be resolved automatically; read <a href="hginit.com">http://hginit.com</a> to learn manually resolve conflicts.</p>
-                     <p>If all goes well, you should have the latest version of the repository.</p>
-                  </section>
-               </section>
-               <hr />
-               <a id="gui"></a>
-               <h3>GUI Method</h3>
-               <p>
-                  You will need to download and install <a href="http://tortoisehg.bitbucket.org/download/index.html">TortoiseHg</a> to follow along with the instuctions and screenshots.		
-               </p>
-               <p>TortoiseHg is mainly for Windows based systems but there are unstable Mac and Linux versions available for download (not sure how well they work).</p>
-               <section id="gui_cloning">
-                  <a href="" id="gui_cloning"></a>
-                  <h4>Cloning</h4>
-                  <p>First of all you need to make a new folder that will be the home of the repository(hopefully you know how to do that...). Then right-click the folder for the context menu. Select the <code>TortoiseHg</code> submenu and select Clone like so -</p>
-                  <img src="http://i.imm.io/I67i.jpeg" alt="" /> 
-                  <p>Copy the link given at <a href="http://code.google.com/p/schs-site/source/checkout">here</a> (make sure you're signed into your google account, it should display your own email rather than mine). The area you should be copying from looks like this:</p>
-                  <img src="http://puu.sh/1flBy" alt="" /> 
-                  <p>Your clone window should look like this</p>
-                  <img src="http://puu.sh/1flCT" alt="" /> 
-                  <p>Hit clone and the window should exit by itself, and the directory you right clicked on should have a copy of the site in it! </p>
-                  <div class="alert alert-success">
-                     <i class="icon-ok-circle"></i>  <strong>That's it!</strong> Make all the changes you want.
                   </div>
-               </section>
-               <section id="gui_commit">
-                  <a href="" id="gui_commit"></a>
-                  <h4>Committing &amp; Pushing</h4>
-                  <p>To commit just right click the folder you cloned into and hit <code>Hg Commit</code>:</p>
-                  <img src="http://puu.sh/1flHC" alt="" />
-                  <p>After your in the commit window, it should list files that had changes done to theml; in this screenshot I changed index.html so it's listed as blue with a "M" standing for modified.</p>
-                  <img src="http://puu.sh/1flIL" alt="" />
-                  <p>Notice how I have added a new file, however. The file is pink and if you want mercurial to track and commit it you must check the tick box on the left of it, like so.</p>
-                  <img src="http://puu.sh/1flLa" alt="" /> 
-                  <p><span class="label label-info">Note</span> You must check the boxes of any files you've added and want tracked. Sometimes you want to exclude files from being tracked, which is why manually choosing is required.</p>
-                  <p>Make sure you type a meaningful commit message in the top right including what you changed. In this case, I made the site more hipster :)</p>
-                  <img src="http://puu.sh/1flR0" alt="" />
-                  <p>The first time you commit, mercurial will pop up with a message saying you need to "identify yourself to mercurial."</p>
-                  <img src="http://puu.sh/1flSk" alt="" />
-                  <p>In the subsequent window that pops up just type your full name and email under username like so:</p>
-                  <img src="http://puu.sh/1flSP" alt="" />
-                  
-                  <p><span class="label label-info">Note</span> Usually usernames are in the format <code>FullName &lt;email&gt;</code> as seen in the screenshot, but you can do whatever you want.</p>
-                  <p>Leave everything else the same and hit ok. The commit should now succeed.</p>
-                  <p>Okay, now that you commited you want to push, i.e. make your changes available to others. Right click the folder again and this time go under <code>TortoiseHg &gt; Synchronize</code></p>
-                  <img src="http://i.imm.io/I6i3.png" alt="" /> 
-                  <p>Click on this icon to push.</p>
-                  <img src="http://i.imm.io/I6iB.png" alt="" />
-                  <p>There should be a confirmation window (hit yes) and after a bit you will prompted for your password</p>
-                  <img src="http://puu.sh/1fmaJ" alt="" />
-                  <p>When prompted for your password, <b>carefully type in your google code password given to you earlier from <a href="https://code.google.com/hosting/settings">here</a> </b>(must be signed to view).</p>
-                  <p><span class="label label-info">Note</span> You can use your google account password for pushing instead of the complex generated one if you go to <a href="https://code.google.com/hosting/settings">here</a> and check this box: <img src="http://puu.sh/1f3Vb" alt="" /></p>
-                  <p>Afterwards, the status bar should say the push succeeded.</p>
-                  <div class="alert alert-success">
-                     <i class="icon-ok-circle"></i>  <strong>Ok!</strong> Now just wait for everyone else to see your changes.
-                  </div>
-               </section>
-               <section id="gui_pulling">
-                  <a href="" id="gui_pulling"></a>
-                  <h4>Pulling</h4>
-               </section>
-               <p>Go back to synchronize option as mentioned above.</p>
-               <img src="http://i.imm.io/I6i3.png" alt="" /> 
-			   <p>Hit the "Post Pull:None" button and change it to "Update - pull, then try to update" like so and tick the last checkbox: </p>
-			   <img src="http://puu.sh/1fmsa" alt="" />
-               <p>Now, hit this button to pull and update:</p>
-               <img src="http://i.imm.io/I6jG.png" alt="" />
-			   <p><span class="label label-important">Errata</span> Don't how the screenshot says "post pull:none", that's a mistake</p>
-			   <p>The bottom of the window (after the command finishes running) should say something like this -</p>
-			   <img src="http://puu.sh/1fmsE" alt="" />
-			                     <div class="alert alert-success">
-                     <i class="icon-ok-circle"></i>  <strong>Congradulations!</strong> You pulled and updated successfully.
-                  </div>
+               </div>
                <hr />
                <a id="appendix"></a>
+			   
                <h3>Appendix</h3>
                <h4>Useful Links:</h4>
                <ul>
@@ -333,6 +373,8 @@ remote: Success.
                   <li><a href="http://hginit.com">http://hginit.com</a> - A much more in depth tutorial on mercurial</li>
                   <li><a href="http://tortoisehg.bitbucket.org/download/index.html">http://tortoisehg.bitbucket.org/download/index.html</a> TortoiseHg, a graphical Mercurial client</li>
                </ul>
+			   </div>
+            </div>
             </div>
          </div>
       </div>
