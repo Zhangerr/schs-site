@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Word List</title>
+	<style type="text/css">
+	div {
+	margin:20px;
+	font-weight:bold;
+	font-size:20px;
+	}</style>
+</head>
+<body>
+	<div class="red">
+	Red
+	</div>
+	<div class="green">
+	Green</div>
+	<div class="blue">
+	Blue</div>
+	<div class="black">
+	Black</div>
+	<div class="orange">
+	Orange</div>
+	<div class="brown">
+	Brown</div>
+	<div class="purple">
+	Purple</div>
+	<div class="green">
+	Green</div>
+	<div class="black">
+	Black</div>
+	<div class="red">
+	Red
+	</div>
+	
+	<div class="orange">
+	Orange</div>
+		<div class="purple">
+	Purple</div>
+		<div class="brown">
+	Brown</div>
+		<div class="green">
+	Green</div>
+		<div class="red">
+	Red
+	</div>
+		<div class="black">
+	Black</div>
+			<div class="purple">
+	</div>
+	<script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	$("div").each(function(i, e) {
+	$(this).css({"color":$(e.nextElementSibling).attr("class")});
+	
+	});
+	</script>
+</body>
+</html>
