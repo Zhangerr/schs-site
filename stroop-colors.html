@@ -9,6 +9,15 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css" type="text/css">
     <style type="text/css">
+				body {
+				
+				}
+				
+				.light {
+				background-color:rgb(20,20,20);
+				color:whitesmoke;
+				}
+				
 				.colors div{
 				margin:20px;
 				font-weight:bold;
@@ -29,7 +38,7 @@
                 .toggle-container {
                 text-align:right;
                 }
-                .togglectrl{
+                #togglestyle, #togglectrl{
                 border-top-left-radius:0px;
                 border-top-right-radius:0px;
                 border-top:0px none;
@@ -38,6 +47,9 @@
                 legend {
                 margin-bottom:0px;
                 }
+				.legend-light{
+				color:white;
+				}
                 input[type="checkbox"]{
                 margin-top:2px;
                 }
@@ -58,7 +70,10 @@
             </fieldset>
           </form>
           <div class="toggle-container">
-            <a href="" class="btn togglectrl"><i class="icon-chevron-up"> </i></a>
+			<div class="btn-group">
+			<a href="" class="btn" id="togglestyle"><i class="icon-off"></i></a>
+            <a href="" class="btn" id="togglectrl"><i class="icon-chevron-up"> </i></a>
+			</div>
           </div>
           <div class="row-fluid">
             <div class="span2 offset5">
@@ -71,16 +86,32 @@
 </script><script type="text/javascript" src="http://davidbau.com/encode/seedrandom.js">
 </script><script src="js/bootstrap.min.js" type="text/javascript">
 </script><script type="text/javascript">
-var visible = true;
+	var lightStyle = true;
+	$("#togglestyle").on("click",function(e) {
+	e.preventDefault();
+	if(lightStyle) {
+	$("body").addClass("light");
+	$("legend").addClass("legend-light");
+	$(".btn").addClass("btn-inverse");
+	$("i").addClass("icon-white");
+	} else {
+	$("body").removeClass("light");
+	$("legend").removeClass("legend-light");
+	$(".btn").removeClass("btn-inverse");
+	$("i").removeClass("icon-white");
+	}
+	lightStyle = !lightStyle;
+	});
+	var visible = true;
     Math.seedrandom();
-    var colors = ["Red","Green","Blue","Black","Orange","Brown","Purple"];
-    $(".togglectrl").on("click",function(data){data.preventDefault();
+    var colors = ["Red","Green","Blue","Grey","Orange","Brown","Purple"];
+    $("#togglectrl").on("click",function(data){data.preventDefault();
     if(visible) {
     $('.form-inline').slideUp("fast");
-    $('.togglectrl i').toggleClass('icon-chevron-up icon-chevron-down');
+    $('#togglectrl i').toggleClass('icon-chevron-up icon-chevron-down');
     } else {
     $('.form-inline').slideDown("fast");
-    $('.togglectrl i').toggleClass('icon-chevron-down icon-chevron-up');
+    $('#togglectrl i').toggleClass('icon-chevron-down icon-chevron-up');
 
     }
     visible = !visible;
