@@ -9,12 +9,8 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css" type="text/css">
     <style type="text/css">
-				body {
-				
-				}
-				
 				.light {
-				background-color:rgb(20,20,20);
+				background-color:rgb(30,30,30);
 				color:whitesmoke;
 				}
 				
@@ -92,13 +88,15 @@
 	if(lightStyle) {
 	$("body").addClass("light");
 	$("legend").addClass("legend-light");
-	$(".btn").addClass("btn-inverse");
+	$(".btn-group .btn").addClass("btn-inverse");
 	$("i").addClass("icon-white");
+	$('.sub').addClass('btn-danger');
 	} else {
 	$("body").removeClass("light");
 	$("legend").removeClass("legend-light");
-	$(".btn").removeClass("btn-inverse");
+	$(".btn-group .btn").removeClass("btn-inverse");
 	$("i").removeClass("icon-white");
+	$('.sub').removeClass('btn-danger');
 	}
 	lightStyle = !lightStyle;
 	});
@@ -109,6 +107,7 @@
     if(visible) {
     $('.form-inline').slideUp("fast");
     $('#togglectrl i').toggleClass('icon-chevron-up icon-chevron-down');
+	
     } else {
     $('.form-inline').slideDown("fast");
     $('#togglectrl i').toggleClass('icon-chevron-down icon-chevron-up');
