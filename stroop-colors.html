@@ -16,6 +16,12 @@
         font-weight:bold;
         font-size:20px;
         }
+		.row-fluid {
+		text-align:center;
+		}
+		.colors {
+		text-align:left;
+		}
     </style>
   </head>
   <body>
@@ -32,9 +38,13 @@
               "btn btn-primary sub">Submit</button>
             </fieldset>
           </form>
+		  <div class="row-fluid">
+		  <div class="span2 offset5">
           <div class="colors">
             
           </div>
+		  </div>
+		  </div>
         </div>
       </div>
     </div><script src="http://code.jquery.com/jquery-latest.js" type=
@@ -48,7 +58,7 @@ Math.seedrandom();
 var colors = ["Red","Green","Blue","Black","Orange","Brown","Purple"];
     $(".sub").on("click", function(data){
     data.preventDefault();
-    $(".colors").html("");
+    $(".colors").fadeOut("fast",function() {$(".colors").html("");
 	var congruent = $(".checkbox").is(":checked");
     var val = $('.x').val();
     for(var i = 0; i < val; i++) {
@@ -60,7 +70,8 @@ var colors = ["Red","Green","Blue","Black","Orange","Brown","Purple"];
     $(".colors").append("<div style='color:"+colors[congruent?index:index2]+"'>" + colors[index] + "<\/div>");
     $(".colors").hide();
     $(".colors").fadeIn("fast");
-    }
+	}
+    });
     });
     $("div").each(function(i, e) {
         $(this).css({"color":$(e.nextElementSibling).attr("class")});   
