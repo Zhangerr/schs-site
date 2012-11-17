@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css" type=
     "text/css">
     <style type="text/css">
-.colors div{
+	.colors div{
         margin:20px;
         font-weight:bold;
         font-size:20px;
@@ -22,22 +22,49 @@
 		.colors {
 		text-align:left;
 		}
+		.form-inline {
+		padding-bottom:20px;
+		margin-top:20px;
+		margin-bottom:0px;
+		border-bottom:1px solid #e5e5e5;
+		}
+		.toggle-container {
+		text-align:right;
+		}
+		.togglectrl{
+		border-top-left-radius:0px;
+		border-top-right-radius:0px;
+		border-top:0px none;
+		background-image:none;
+		}
+		legend {
+		margin-bottom:0px;
+		}
+		input[type="checkbox"]{
+		margin-top:2px;
+		}
+		.togglectrl:active {
+		box-shadow:none;
+		background-color:rgb(220,220,220);
+		}
     </style>
   </head>
   <body>
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span10 offset1">
+		 <legend>Color List <small>by Alex Zhang</small></legend> 
           <form class="form-inline">
             <fieldset>
-              <legend>Color List <small>by Alex Zhang</small></legend> <label style=
-              "font-weight:bold;">Number of Colors:</label> <input type=
+             <label><strong>Number of Colors:</strong></label> <input type=
               "number" class="x" placeholder="Enter a value" value="20">
-              <label class="checkbox"><input type="checkbox" class="checkbox"> Congruent Color
+              <label class="checkbox"><input type="checkbox" class="checkbox" /> Congruent Color
               Words</label> <button type="submit" class=
               "btn btn-primary sub">Submit</button>
             </fieldset>
-          </form>
+          </form><div class="toggle-container">
+		  <a href="" class="btn togglectrl"><i class="icon-chevron-up"></i></a>
+		  </div>
 		  <div class="row-fluid">
 		  <div class="span2 offset5">
           <div class="colors">
@@ -54,8 +81,20 @@
 <script type="text/javascript" src="http://davidbau.com/encode/seedrandom.js"></script>
 <script src="js/bootstrap.min.js" type="text/javascript">
 </script><script type="text/javascript">
+var visible = true;
 Math.seedrandom();
 var colors = ["Red","Green","Blue","Black","Orange","Brown","Purple"];
+$(".togglectrl").on("click",function(data){data.preventDefault();
+if(visible) {
+$('.form-inline').slideUp("fast");
+$('.togglectrl i').toggleClass('icon-chevron-up icon-chevron-down');
+} else {
+$('.form-inline').slideDown("fast");
+$('.togglectrl i').toggleClass('icon-chevron-down icon-chevron-up');
+
+}
+visible = !visible;
+});
     $(".sub").on("click", function(data){
     data.preventDefault();
     $(".colors").fadeOut("fast",function() {$(".colors").html("");
