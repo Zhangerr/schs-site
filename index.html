@@ -1,92 +1,147 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
-<head>
-	<meta charset="UTF-8">
-	
-	<title>SCHS Web Design</title>
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <title>SCHS Web Design</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="js/bootstrap.min.js"></script>
-	<link href="css/bootstrap.min.css" rel="stylesheet" />
-	<link rel="stylesheet" href="css/boostrap-responsive.min.css" />
-</head>
-<body>
-	<div class="container">
-	  <div class="row">
-		<div class="span12">		<h1>SCHS Web Design</h1></div>
-
-	  </div>
-	  <br />
-	  <br />
-	      <div class="navbar-inverse navbar">
-			<div class="navbar-inner">
-
-				<div class="container">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="fullcalendar/fullcalendar.css" />
+    <link rel="stylesheet" type="text/css" href="fullcalendar/fullcalendar.print.css" media="print" />
+    <script type="text/javascript" src="jquery/jquery-ui-1.8.23.custom.min.js"></script>
+    <script type="text/javascript" src="fullcalendar/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="fullcalendar/gcal.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+      	
+      	var date = new Date();
+      	var d = date.getDate();
+      	var m = date.getMonth();
+      	var y = date.getFullYear();
+      	$('#calendar').fullCalendar({
+      		// US Holidays
+      		events: {
+                 		url: 'https://www.google.com/calendar/feeds/0d43qb2uu4qv0gvtidv7g2revo%40group.calendar.google.com/public/basic',
+                		editable:false
+            	 		},
+      		
+      		eventClick: function(event) {
+      			// opens events in a popup window
+      			window.open(event.url, 'gcalevent', 'width=700,height=600');
+      			return false;
+      		},
+      		
+      		loading: function(bool) {
+      			if (bool) {
+      				$('#loading').show();
+      			}else{
+      				$('#loading').hide();
+      			}
+      		},
+      		editable: true
+      		
+      	});
+      	
+      });
+      
+    </script>
+  </head>
+  <body style="background-color:#666;">
 	
-				    <ul class="nav">
-    <li class="active">
-    <a href="#"><span class="icon-home icon-white" style="margin-right:4px;"></span>Home</a>
-    </li>
-    <li><a href="#"><span class="icon-user icon-white" style="margin-right:4px;"></span>Forums</a></li>
-    <li><a href="#"><span class="icon-download icon-white" style="margin-right:4px;"></span>Download</a></li>
-	<li><a href="#"><span class="icon-tasks icon-white" style="margin-right:4px;"></span>Changelog</a></li>  </ul><ul class="nav pull-right"> <li class="dropdown">
-<a href="#"
-class="dropdown-toggle"
-data-toggle="dropdown">
-Account
-<b class="caret"></b>
-</a>
-<ul class="dropdown-menu">
-<li><a>Login</a></li>
-<li><a>Account Info</a></li>
-</ul>
-</li>
-  </ul>
-	
-				</div>
-			</div>
-    </div>
-	<div class="row">
-	<div class="span12">  <div id="myCarousel" class="carousel slide">
-    <!-- Carousel items -->
-    <div class="carousel-inner">
+	<div class="container-fluid" style="background-image:url('img/navy_blue.png');">
+	<div class="row-fluid">
+	<div class="span10 offset1" style="position:relative;">
+	<!--http://puu.sh/1d4Qv-->
+        <img class="img-rounded" style="display:inline;height:200px; margin:auto;" alt="The Web Design Club" src="img/logo.png" />
+<div class="navbar" style="display:inline;">
+            <div class="navbar-inner " style="display:inline-block;position:absolute;bottom:50px;right:0px;vertical-align:middle;">
+              <div class="container">
+<a class="brand" href="#">SCHS Web Design</a>
+                <ul class="nav">
+                  <li class="active">
+                    <a href="#"><span class="icon-home" style="margin-right:4px;"></span>Home</a>
+                  </li>
+                  <li><a href="#"><span class="icon-user" style="margin-right:4px;"></span>Forums</a></li>
 
-    <div class="active item"><img class="img-rounded" style="height:400px; margin:auto;" src="http://puu.sh/1d4Qv" /></div>
-    
-	<!--<div class="item"><iframe style="margin-left:200px;z-index:-100;" width="360" height="316" src="http://www.youtube.com/embed/hwhB4Sii6ZI" frameborder="0" allowfullscreen></iframe></div>-->
-	
-    </div>
-    <!-- Carousel nav -->
-    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-    </div></div>
+                  <li><a href="#"><span class="icon-tasks" style="margin-right:4px;"></span>Changelog</a></li>
+                </ul>
+                <ul class="nav pull-right">
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Account
+                    <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a>Login</a></li>
+                      <li><a>Account Info</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
 	</div>
-			<div class="row">
-			
-	  <div class="span4">
-	  <h2>About</h2>
-	  <div>
-	  Content to be done blah blah
-	  </div>
-	  <br />
-	  <div style=""><div class="btn-group" style="">
-	  <a href="" class="btn btn-primary"><span class="icon-download-alt icon-white" style="margin-right:2px;">&nbsp;&nbsp;</span>DOWNLOAD</a>
-	  <a href="" class="btn"><span class="icon-user" style="margin-right:3px;"></span>FORUMS</a>
-	  
-	  </div>
-	  </div>
-	  <br />
-	   </div>
-	   <div class="span4">
-	  <h2>Video</h2>
-	  <br />
-	  
-	 </div>
-	 <div class="span4">
-	 <h2>News</h2>
-	 </div>
-	  <div class="span8">  
-	  
-	  </div>
-  </div
-</body>
+	</div>
+</div>
+<div class="container-fluid" style="background-color:#3A3A3A;">
+<div class="row-fluid">
+<div class="span10 offset1" style="margin-top:20px;">
+              <div id="myCarousel" class="carousel slide">
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                  <div class="active item"><img src="http://placehold.it/1380x500"></div>
+                  <!--<div class="item"><iframe style="margin-left:200px;z-index:-100;" width="360" height="316" src="http://www.youtube.com/embed/hwhB4Sii6ZI" frameborder="0" allowfullscreen></iframe></div>-->
+                </div>
+                <!-- Carousel nav -->
+                <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+              </div>
+</div>
+</div>
+</div>
+    <div class="container-fluid" style="padding:0px;">
+      <div class="row-fluid">
+        <div class="span10 offset1">
+
+
+          <br />
+          
+          <div class="row-fluid">
+            <div class="span10 offset1">
+
+            </div>
+          </div>
+          <div class="row-fluid">
+            <div class="span4">
+              <h2>About</h2>
+              <div>
+                Content to be done blah blah
+              </div>
+              <br />
+              <div style="">
+                <div class="btn-group" style="">
+                  <a href="" class="btn btn-primary"><span class="icon-download-alt icon-white" style="margin-right:2px;">&nbsp;&nbsp;</span>DOWNLOAD</a>
+                  <a href="" class="btn"><span class="icon-user" style="margin-right:3px;"></span>FORUMS</a>
+                </div>
+              </div>
+              <br />
+            </div>
+            <div class="span4">
+              <h2>Video</h2>
+              <br />
+            </div>
+            <div class="span4">
+              <h2>News</h2>
+            </div>
+          </div>
+          <div class="row-fluid">
+            <div class="span6 offset3">
+              <div id="calendar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
