@@ -7,7 +7,6 @@
       Word List
     </title>
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="css/bootstrap-responsivecss" type="text/css">
     <link rel="stylesheet" href="css/font-awesome.css" type="text/css">
     <style type="text/css">
 				.light {
@@ -103,7 +102,7 @@
 	});
 	var visible = true;
     Math.seedrandom();
-    var colors = ["Red","Green","Blue","Grey","Orange","Brown","Purple"];
+    var colors = ["Red","Green","Blue","Orange","Purple","Yellow"];
     $("#togglectrl").on("click",function(data){data.preventDefault();
     if(visible) {
     $('.form-inline').slideUp("fast");
@@ -119,7 +118,16 @@
     $(".sub").on("click", function(data){
     data.preventDefault();
     $(".colors").fadeOut("fast",function() {$(".colors").html("");
-        var congruent = $(".checkbox").is(":checked");
+    var congruent = $(".checkbox").is(":checked");
+	if(congruent) {
+		$('.colors').html('<div style="color:Purple">Purple</div><div style="color:Yellow">Yellow</div><div style="color:Yellow">Yellow</div><div style="color:Blue">Blue</div><div style="color:Purple">Purple</div><div style="color:Yellow">Yellow</div><div style="color:Green">Green</div><div style="color:Blue">Blue</div><div style="color:Purple">Purple</div><div style="color:Blue">Blue</div><div style="color:Orange">Orange</div><div style="color:Green">Green</div><div style="color:Red">Red</div><div style="color:Green">Green</div><div style="color:Blue">Blue</div><div style="color:Green">Green</div><div style="color:Red">Red</div><div style="color:Yellow">Yellow</div><div style="color:Green">Green</div><div style="color:Red">Red</div>');
+	}
+	else {
+		$('.colors').html('<div style="color:Orange">Orange</div><div style="color:Purple">Purple</div><div style="color:Orange">Orange</div><div style="color:Yellow">Yellow</div><div style="color:Red">Red</div><div style="color:Red">Red</div><div style="color:Green">Green</div><div style="color:Orange">Orange</div><div style="color:Blue">Blue</div><div style="color:Red">Red</div><div style="color:Yellow">Yellow</div><div style="color:Blue">Blue</div><div style="color:Yellow">Yellow</div><div style="color:Green">Green</div><div style="color:Purple">Purple</div><div style="color:Orange">Orange</div><div style="color:Yellow">Yellow</div><div style="color:Green">Green</div><div style="color:Purple">Purple</div><div style="color:Orange">Orange</div>');
+
+	}
+    $(".colors").hide();
+    $(".colors").fadeIn("fast");/*
     var val = $('.x').val();
     for(var i = 0; i < val; i++) {
     var index = Math.floor((Math.random()*colors.length));
@@ -130,7 +138,7 @@
     $(".colors").append("<div style='color:"+colors[congruent?index:index2]+"'>" + colors[index] + "<\/div>");
     $(".colors").hide();
     $(".colors").fadeIn("fast");
-        }
+        }*/
     });
     });
     $("div").each(function(i, e) {
