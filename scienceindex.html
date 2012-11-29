@@ -59,7 +59,7 @@ font-size:14px;
 line-height:20px;
 }
 
-h1,a {
+h1,a,a:before {
 transition:all .5s;
 -moz-transition:all .5s;
 -webkit-transition:all .5s;
@@ -78,7 +78,7 @@ margin:5px;
 }
 
 ul > li:last-child:after {
-content:"";
+content:"" !important;
 margin:0;
 }
 
@@ -89,22 +89,28 @@ text-decoration:none;
 
 .gone {
 position:absolute;
-bottom:0;
+bottom:0%;
 left:50%;
 width:200px;
 height:40px;
-margin-top:-20px;
+margin-bottom:30px;
 text-align:center;
 margin-left:-100px;
 font-size:13px;
 color:#999;
 }
-
 a:hover {
 color:#b00;
 }
+ul > li > a:hover {
 
-.gone > li:after {
+/*text-shadow:0px -15px 1px #333;*/
+}
+ul > li > a:hover:before {
+
+/*text-shadow:0px -15px 1px #333;*/
+}
+.gone > ul > li:after {
 content:" |";
 }
 
@@ -132,12 +138,13 @@ margin-left:-160px;
             <li><a href="http://www.sctritonscience.com/Young/indexyoung.htm">Young</a> <i class="icon-chevron-left"></i></li>
          </ul>
       </div>
-	
-	<ul class="gone"><span style="color:#444;">Archives:</span>
+	<div class="gone"><span style="color:#444;">Archives:</span>
+	<ul style="display:inline;">
             <li><a href="http://www.sctritonscience.com/Vo/indexvo.htm">Vo</a></li>
             <li><a href="http://www.sctritonscience.com/Batten/indexbatten.htm"> Batten</a></li>
 
 	</ul>
-	
+		<div>&copy; <a href="http://schs-site.googlecode.com/hg/index.html">SCHS Web Design 2012</a></div>
+	</div>
    </body>
 </html>
