@@ -5,36 +5,22 @@
       <title>Triton Science</title>
       <meta name="description" content="Materials for science students at San Clemente High School." />
       <link rel="stylesheet" href="css/font-awesome.css" />
-      <link href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css" />
+      <link href="http://fonts.googleapis.com/css?family=Droid+Sans:700" rel="stylesheet" type="text/css" />
       <style>
-        h1,h2,h3,h4,h5,h6 {
+h1,h3{
 font-family:inherit;
 font-weight:bold;
-line-height:20px;
-color:inherit;
 text-rendering:optimizelegibility;
-margin:10px 0;
-}
-
-h1,h2,h3 {
+margin:0;
 line-height:40px;
 }
-
 h1 {
 font-size:38.5px;
-margin:0;
 }
-
-h2 {
-font-size:31.5px;
-}
-
 h3 {
 font-size:24.5px;
 font-family:'Droid Sans', sans-serif;
-margin:0;
 }
-
 li {
 line-height:20px;
 display:inline;
@@ -59,7 +45,7 @@ font-size:14px;
 line-height:20px;
 }
 
-h1,a,a:before {
+h1,a{
 transition:all .5s;
 -moz-transition:all .5s;
 -webkit-transition:all .5s;
@@ -86,7 +72,6 @@ a {
 color:#777;
 text-decoration:none;
 }
-
 .gone {
 position:absolute;
 bottom:0%;
@@ -97,23 +82,19 @@ margin-bottom:30px;
 text-align:center;
 margin-left:-100px;
 font-size:13px;
-color:#999;
 }
 a:hover {
 color:#b00;
 }
 ul > li > a:hover {
-
-/*text-shadow:0px -15px 1px #333;*/
-}
-ul > li > a:hover:before {
-
-/*text-shadow:0px -15px 1px #333;*/
+text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25); /*0px -15px 1px #333;*/
 }
 .gone > ul > li:after {
 content:" |";
+}  
+.gone > ul {
+   display:inline;
 }
-
 .center {
 text-align:center;
 position:absolute;
@@ -123,6 +104,9 @@ top:50%;
 left:50%;
 margin-top:-100px;
 margin-left:-160px;
+}
+.archives{
+   color:#444;
 }
       </style>
    </head>
@@ -138,12 +122,11 @@ margin-left:-160px;
             <li><a href="http://www.sctritonscience.com/Young/indexyoung.htm">Young</a> <i class="icon-chevron-left"></i></li>
          </ul>
       </div>
-	<div class="gone"><span style="color:#444;">Archives:</span>
-	<ul style="display:inline;">
+	<div class="gone muted"><span class="archives">Archives:</span>
+	<ul>
             <li><a href="http://www.sctritonscience.com/Vo/indexvo.htm">Vo</a></li>
-            <li><a href="http://www.sctritonscience.com/Batten/indexbatten.htm"> Batten</a></li>
-
-	</ul>
+            <li><a href="http://www.sctritonscience.com/Batten/indexbatten.htm">Batten</a></li>
+         </ul>
 		<div>&copy; <a href="http://schs-site.googlecode.com/hg/index.html">SCHS Web Design 2012</a></div>
 	</div>
    </body>
