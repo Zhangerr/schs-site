@@ -13,6 +13,8 @@
 	  <link href='http://fonts.googleapis.com/css?family=Droid+Sans:700' rel='stylesheet' type='text/css'>
       <script type="text/javascript" src="fullcalendar/fullcalendar.min.js"></script>
       <script type="text/javascript" src="fullcalendar/gcal.js"></script>
+	  <script type="text/javascript" src="js/jquery.quovolver.js"></script>
+	  
 	  <style>
 	  /**, ::after, ::before {
 		-webkit-box-sizing: border-box;
@@ -24,12 +26,15 @@
 		}
 		.box {
 		background-color:#eee;
-		padding:20px;
+		/*padding:20px;*/
 		//border:1px #aaa solid;
 		box-shadow:0 0 5px rgba(0, 0, 0, 0.2);
 		position:relative;
 		margin-bottom:20px;
 	/*	overflow:hidden;*/
+		}
+		.box-inner {
+			padding:20px;
 		}
 		.innerbox {
 			border:1px #ccc solid;
@@ -71,10 +76,67 @@
 		.btn-box {
 		border-radius:0px;
 		}
+		.banner {
+		    background-color: #1793CC;
+    border-bottom: 1px solid #006666;
+    color: #FFFFFF;
+	margin:0px;
+    padding: 0 0 0 25px;
+    z-index: 10;
+    overflow:visible;
+	position:absolute;
+	top:20px;
+	left:0px;
+	//box-shadow:0px 0px 5px rgba(0,0,0,1);
+	width:100%;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	::selection {
+	background-color:orange;
+	color:white;
+	}
+	.banner::after {
+	    border-color: transparent #006666 transparent transparent;
+    border-style: solid;
+    border-width: 0px 20px 20px 0px;
+	
+    content: "";
+    display: block;
+	left:0;
+    margin: 0px 0 0 0px;
+    position:absolute;
+    z-index: 0;
+	}
+	.banner::before {
+	border-color: transparent transparent transparent #006666;
+    border-style: solid;
+    border-width: 0px 0px 20px 20px;
+    content: "";
+    display: block;
+	right:0;
+	bottom:-20px;
+    margin: 0px 0 0 0px;
+    position:absolute;
+	}
+	blockquote {
+	margin:0px;
+	font-style:italic;
+	
+	padding:0px;
+	}
+	blockquote p {
+	font-size:14px;
+	line-height:1.333em;
+	}
+	blockquote p::before, blockquote p::after{
+	content:"\"";
+	}
 	  </style>
       <script type="text/javascript">
          $(document).ready(function() {
-         	
+         	$('blockquote').quovolver();
          	$('#calendar').fullCalendar({
          contentHeight:600,
          eventBackgroundColor:"#880000",
@@ -176,10 +238,13 @@
                   </div>
                </div>
                <div class="row-fluid">
-                  <div class="span4">
+                  <div class="span4" style="position:relative;"><h2 class="banner">About</h2>
+				  <div style="padding:0 20px;">
 				  <div class="box box-red">
-                     <h2>About</h2>
-                     <div>
+				  
+				  <div class="box-inner">
+                     
+                     <div style="padding-top:60px;">
                         We are a small yet elite club at the prestigious <a href="http://sctritons.schoolloop.com">San Clemente High School</a> that strive to use cutting edge web technologies such as HTML5 and CSS3 in order to design beautiful websites. Heavy emphasis is placed on mobile first responsive design and progressive enhancement; our members are screened and handpicked through our rigorous and stringent interview process.
                      </div>
                      <br />
@@ -191,7 +256,9 @@
                      </div>
                      <br />
                   </div>
-				  <div class="box box-red">
+				  </div>
+				  </div>
+				  <div class="box box-inner box-red">
 				  <h4>Want a website designed?</h4>
 				  Drop us a line! We'll get in contact.
 				<br /> <br />
@@ -211,23 +278,64 @@
 				  </fieldset>
 				</form>
 				  </div>
-				  <div class="box box-red"><h4>social media <small>connect with us</small></h4>
+				  <div class="box box-inner box-red"><h4>social media <small>connect with us</small></h4>
 				  <div class="row-fluid" style="margin-bottom:5px;">
-				                 <a class="btn btn-danger" style="width:10px;"><i class="icon-google-plus"></i></a>
+				  <div class="span3">
+				  <div style="margin-bottom:5px"> 
+				                 <a class="btn btn-danger" style="width:10px;"><i class="icon-google-plus"></i></a>								 
                <a class="btn btn-info" style="width:10px;"><i class="icon-twitter" style="position:relative;left:-1px;"></i></a>
-			   
 			   </div>
-			   <div class="row-fluid">
-               <a class="btn btn-primary" style="width:10px;"><i class="icon-facebook"></i></a>
+			   <a class="btn btn-primary" style="width:10px;"><i class="icon-facebook"></i></a>
                <a class="btn btn-success" style="width:10px;"><i class="icon-github" style="position:relative;left:-1px;"></i></a>
 			   </div>
+			   <div class="span9">
+			   		<blockquote>
+			<p>SCHS Web Design is great. They gave me a makeover and everything I could possibly ask for! I highly endorse their service.</p>
+			<cite class="muted" > &ndash; John Doe</cite>
+		</blockquote>
+	
+		<blockquote>
+			<p>They're like wizards!</p>
+			<cite class="muted" > &ndash; Harry Potter</cite>
+		</blockquote>
+		<blockquote>
+			<p>Pick these guys. You won't be disappointed.</p>
+			<cite class="muted" > &ndash; John Smith</cite>
+		</blockquote>
+		<blockquote>
+			<p>The staff was very friendly and helpful. Any questions I had were resolved within 3 minutes! Their customer support is top-notch and very efficient; I wish all design firms had such excellent service.</p>
+			<cite class="muted" > &ndash; Smith John</cite>
+		</blockquote>
+	<!--
+		<blockquote>
+			<p>Donec rutrum convallis viverra. Suspendisse vehicula, risus sit amet luctus pharetra, quam ante condimentum metus, porttitor vulputate magna felis quis dui.</p>
+			<cite>&ndash; Quote Author (Quote #3)</cite>
+		</blockquote>
+	
+		<blockquote>
+			<p>Suspendisse ipsum urna, pellentesque eget sagittis eget, porta eget ligula. Mauris id posuere nisl. Aliquam sit amet urna lorem. Donec et odio et velit ornare dapibus a sit amet odio. Praesent ornare cursus ante quis fringilla. Vivamus id egestas sapien. Nullam mollis elit eros, ac euismod neque. Nam placerat dictum congue.</p>
+			<cite>&ndash; Quote Author (Quote #4)</cite>
+		</blockquote>
+	
+		<blockquote>
+			<p>Nulla facilisi. Mauris vel mattis risus. Ut nec luctus tortor. In interdum pulvinar quam non pharetra. Proin sed diam in lorem varius tempor. Vestibulum porta, diam quis mollis rutrum, dolor lectus interdum leo, malesuada convallis purus tortor sed turpis.</p>
+			<cite>&ndash; Quote Author (Quote #5)</cite>
+		</blockquote>
+	
+		<blockquote>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu eros velit, non blandit ipsum. Donec pretium, nibh vitae tristique tempor, enim sem condimentum lacus, vel mattis mauris risus id justo. Nullam tincidunt, augue sit amet euismod condimentum, orci elit dignissim odio, a viverra augue enim in lectus. Ut tempor commodo venenatis.</p>
+			<cite>&ndash; Quote Author (Quote #6)</cite>
+		</blockquote>-->
+			   </div>
+			   </div>
+
 				  </div>
 				  </div>
                   <div class="span8">
                     
-                     <div class="box box-blue" style="/*padding:20px;box-shadow:0px 0px 15px #666;font-size:14px;line-height:20px;*/">
-					  <h2>Our Clients</h2>
-					  
+                     <div class="box box-inner box-blue" style="/*padding:20px;box-shadow:0px 0px 15px #666;font-size:14px;line-height:20px;*/">
+					  <h2 style="border-bottom:1px solid #ccc;padding-bottom:15px;">Our Clients <small>just a small sample</small></h2>
+						
                         <div class="innerbox" style="background-color:white;width:105%;">
                         	<h4 style="font-family:'Droid Sans'">MR. YOUNG</h4><hr />
                         	<div class="row-fluid">
@@ -295,7 +403,7 @@
                </div>
 			   
                <div class="row-fluid" style="margin-top:50px;">
-			    <div id="calendar" class="box box-red"></div>
+			    <div id="calendar" class="box box-inner box-red"></div>
                </div>
             </div>
          </div>
