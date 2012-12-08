@@ -21,6 +21,7 @@
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
 		}*/
+
 		.carousel-inner img{
 			margin:auto;
 		}
@@ -41,6 +42,7 @@
 			padding:20px;
 			margin-bottom:20px;
 			position:relative;
+			width:105%;
 		}
 		.box::before {
 		height:5px;
@@ -75,6 +77,9 @@
 		}
 		.btn-box {
 		border-radius:0px;
+		}
+		.abt {
+		padding-top:60px;
 		}
 		.banner {
 		    background-color: #1793CC;
@@ -129,10 +134,65 @@
 	blockquote p {
 	font-size:14px;
 	line-height:1.333em;
+	padding:0px;
+	}
+	.dsktop {
+	padding:0 20px;
 	}
 	blockquote p::before, blockquote p::after{
 	content:"\"";
+	}	
+	.sm .btn {
+	margin-bottom:2px;
 	}
+	@media (max-width:979px){
+			.navbar .brand {
+			margin-left:0px;
+			padding-left:20px;
+			}
+			.navbar-fixed-top {
+			margin-left:0px;
+			margin-right:0px;
+			margin-bottom:0px;
+			}
+			.dsktop {
+			padding:0px;
+			}
+			.abt {
+			padding-top:0px;
+			}
+						.innerbox {
+			width:inherit;
+			}
+		}	
+	@media (max-width:767px){
+			body {
+				padding-left:0px;
+				padding-right:0px;
+			}
+
+			.icon-row {
+			display:inline;
+			}
+			.socialmedia {
+			margin-bottom:10px;
+			}
+			.content {
+			padding: 0 10px;
+			}
+			.footer {
+			padding: 0 10px;
+			}
+			#calendar {
+			display:none;
+			}
+		}
+		@media (min-width:768px) and (max-width:979px){
+		#content-box {
+		width:100%;
+		margin-left:0px;
+		}
+		}
 	  </style>
       <script type="text/javascript">
          $(document).ready(function() {
@@ -172,8 +232,15 @@
          <div class="navbar-inner">
             <div class="container-fluid">
                <div class="row-fluid">
+
                   <div class="span10 offset1">
+				  						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </a>
                      <a class="brand" href="#" style="font-weight:bold;font-family:'Droid Sans'">SCHS Web Design</a>
+					 <div class="nav-collapse collapse">
                      <ul class="nav">
                         <li class="active">
                            <a href="#"><span class="icon-home"></span> Home</a>
@@ -183,7 +250,8 @@
                         <li><a href=""><i class="icon-group"></i> About</a></li>
                         <li><a href=""><i class="icon-group"></i> Blog</a></li>
                      </ul>
-                     <ul class="nav pull-right">
+					 </div>
+                   <!--  <ul class="nav nav-collapse collapse pull-right">
                         <li class="dropdown">
                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                            Account
@@ -193,7 +261,7 @@
                               <li><a>Login</a></li>
                               <li><a>Account Info</a></li>
                            </ul>
-                        </li>
+                        </li>-->
                      </ul>
                   </div>
                </div>
@@ -229,26 +297,26 @@
             </div>
          </div>
       </div>
-      <div class="container-fluid" style="padding:0px;box-shadow: inset 0 -15px 15px -15px #333;padding-bottom:30px;background-color:#DDD;">
+      <div class="container-fluid content" style="box-shadow: inset 0 -15px 15px -15px #333;padding-bottom:30px;background-color:#DDD;">
          <div class="row-fluid">
-            <div class="span10 offset1">
+            <div class="span10 offset1" id="content-box">
                <br />
                <div class="row-fluid">
                   <div class="span10 offset1">
                   </div>
                </div>
                <div class="row-fluid">
-                  <div class="span4" style="position:relative;"><h2 class="banner">About</h2>
-				  <div style="padding:0 20px;">
+                  <div class="span4" style="position:relative;"><h2 class="banner visible-desktop">About</h2>
+				  <div class="dsktop" style="">
 				  <div class="box box-red">
 				  
 				  <div class="box-inner">
-                     
-                     <div style="padding-top:60px;">
+                     <h2>About</h2>
+                     <div class="abt">
                         We are a small yet elite club at the prestigious <a href="http://sctritons.schoolloop.com">San Clemente High School</a> that strive to use cutting edge web technologies such as HTML5 and CSS3 in order to design beautiful websites. Heavy emphasis is placed on mobile first responsive design and progressive enhancement; our members are screened and handpicked through our rigorous and stringent interview process.
                      </div>
                      <br />
-                     <div style="text-align:center;">
+                     <div style="text-align:center;" class="visible-desktop">
                         <div class="btn-group" style="">
                            <a href="" class="btn btn-danger"><span class="icon-download-alt"></span> MORE INFO</a>
                            <a href="" class="btn "><span class="icon-user" style="margin-right:3px;"></span> MEET THE TEAM</a>
@@ -278,19 +346,21 @@
 				  </fieldset>
 				</form>
 				  </div>
-				  <div class="box box-inner box-red"><h4>social media <small>connect with us</small></h4>
-				  <div class="row-fluid" style="margin-bottom:5px;">
-				  <div class="span3">
-				  <div style="margin-bottom:5px"> 
-				                 <a class="btn btn-danger" style="width:10px;"><i class="icon-google-plus"></i></a>								 
-               <a class="btn btn-info" style="width:10px;"><i class="icon-twitter" style="position:relative;left:-1px;"></i></a>
-			   </div>
-			   <a class="btn btn-primary" style="width:10px;"><i class="icon-facebook"></i></a>
-               <a class="btn btn-success" style="width:10px;"><i class="icon-github" style="position:relative;left:-1px;"></i></a>
-			   </div>
+				  <div class="box box-inner box-red sm"><h4>social media <small>connect with us</small></h4>
+				  <div class="row-fluid" style="">
+					  <div class="span3 socialmedia">
+					  <div class="icon-row" style=""> 
+									 <a class="btn btn-danger" style="width:10px;"><i class="icon-google-plus"></i></a>								 
+					   <a class="btn btn-info" style="width:10px;"><i class="icon-twitter" style="position:relative;left:-1px;"></i></a>
+				   </div>
+				   <div class="icon-row">
+				   <a class="btn btn-primary" style="width:10px;"><i class="icon-facebook"></i></a>
+				   <a class="btn btn-success" style="width:10px;"><i class="icon-github" style="position:relative;left:-1px;"></i></a>
+				   </div>
+				   </div>
 			   <div class="span9">
 			   		<blockquote>
-			<p>SCHS Web Design is great. They gave me a makeover and everything I could possibly ask for! I highly endorse their service.</p>
+			<p>SCHS Web Design is great. They gave my site a make over and everything I could possibly ask for! I feel like my site has a breath of new life now; I highly endorse their service.</p>
 			<cite class="muted" > &ndash; John Doe</cite>
 		</blockquote>
 	
@@ -306,26 +376,6 @@
 			<p>The staff was very friendly and helpful. Any questions I had were resolved within 3 minutes! Their customer support is top-notch and very efficient; I wish all design firms had such excellent service.</p>
 			<cite class="muted" > &ndash; Smith John</cite>
 		</blockquote>
-	<!--
-		<blockquote>
-			<p>Donec rutrum convallis viverra. Suspendisse vehicula, risus sit amet luctus pharetra, quam ante condimentum metus, porttitor vulputate magna felis quis dui.</p>
-			<cite>&ndash; Quote Author (Quote #3)</cite>
-		</blockquote>
-	
-		<blockquote>
-			<p>Suspendisse ipsum urna, pellentesque eget sagittis eget, porta eget ligula. Mauris id posuere nisl. Aliquam sit amet urna lorem. Donec et odio et velit ornare dapibus a sit amet odio. Praesent ornare cursus ante quis fringilla. Vivamus id egestas sapien. Nullam mollis elit eros, ac euismod neque. Nam placerat dictum congue.</p>
-			<cite>&ndash; Quote Author (Quote #4)</cite>
-		</blockquote>
-	
-		<blockquote>
-			<p>Nulla facilisi. Mauris vel mattis risus. Ut nec luctus tortor. In interdum pulvinar quam non pharetra. Proin sed diam in lorem varius tempor. Vestibulum porta, diam quis mollis rutrum, dolor lectus interdum leo, malesuada convallis purus tortor sed turpis.</p>
-			<cite>&ndash; Quote Author (Quote #5)</cite>
-		</blockquote>
-	
-		<blockquote>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu eros velit, non blandit ipsum. Donec pretium, nibh vitae tristique tempor, enim sem condimentum lacus, vel mattis mauris risus id justo. Nullam tincidunt, augue sit amet euismod condimentum, orci elit dignissim odio, a viverra augue enim in lectus. Ut tempor commodo venenatis.</p>
-			<cite>&ndash; Quote Author (Quote #6)</cite>
-		</blockquote>-->
 			   </div>
 			   </div>
 
@@ -336,7 +386,7 @@
                      <div class="box box-inner box-blue" style="/*padding:20px;box-shadow:0px 0px 15px #666;font-size:14px;line-height:20px;*/">
 					  <h2 style="border-bottom:1px solid #ccc;padding-bottom:15px;">Our Clients <small>just a small sample</small></h2>
 						
-                        <div class="innerbox" style="background-color:white;width:105%;">
+                        <div class="innerbox" style="background-color:white;">
                         	<h4 style="font-family:'Droid Sans'">MR. YOUNG</h4><hr />
                         	<div class="row-fluid">
                         	   <div class="span4" >
@@ -367,7 +417,7 @@
                         	   </div>
                         	</div>
                         </div>
-						                        <div class="innerbox" style="background-color:white;width:105%;">
+						                        <div class="innerbox" style="background-color:white;">
                         	<h4 style="font-family:'Droid Sans'">THIS WEBSITE</h4><hr />
                         	<div class="row-fluid">
                         	   <div class="span4" >
@@ -404,7 +454,13 @@
 			   
                <div class="row-fluid" style="margin-top:50px;">
 			    <div id="calendar" class="box box-inner box-red"></div>
+				<div class="visible-phone box box-blue"><div class="box-inner" style="text-align:center;">
+					<h3>View the Calendar</h3>
+					<a href="https://www.google.com/calendar/embed?src=MGQ0M3FiMnV1NHF2MGd2dGlkdjdnMnJldm9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ" class="btn btn-info btn-box">Go</a>
+					
+				</div></div>
                </div>
+			   <h1>ADD PRODUCTO CONTENT "PLANS" HERE FOR FUN</h1>
             </div>
          </div>
       </div>
@@ -415,7 +471,7 @@
             </div>
          </div>
       </div> -->
-      <div class="container-fluid" style="background-image:url('img/stressed_linen.png');">
+      <div class="container-fluid footer" style="background-image:url('img/stressed_linen.png');">
          <div class="row-fluid" style="margin-top:20px;">
             <div class="span10 offset1" style="height:100px;color:#aaa">
                <a class="btn btn-danger" style="width:10px;"><i class="icon-google-plus"></i></a>
