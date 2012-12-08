@@ -75,6 +75,12 @@ margin-top:20px;
 .box-orange::before {
 	background-color:#BD842F;
 }
+.box-grey::before {
+	background-color:rgb(170,170,170);
+}
+.box-emphasis {
+box-shadow:0 0 15px #333;
+}
 .btn-box {
 border-radius:0px;
 }
@@ -97,6 +103,7 @@ width:100%;
 -webkit-box-sizing: border-box;
 -moz-box-sizing: border-box;
 box-sizing: border-box;
+text-shadow:#333 0 -1px 0;
 }
 ::selection {
 background-color:orange;
