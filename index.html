@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="fullcalendar/fullcalendar.css" />
       <link rel="stylesheet" type="text/css" href="fullcalendar/fullcalendar.print.css" media="print" />
 	  <link rel="stylesheet" href="css/main-style.css" />
-      <script type="text/javascript" src="jquery/jquery-ui-1.8.23.custom.min.js"></script>
+      <!--<script type="text/javascript" src="jquery/jquery-ui-1.8.23.custom.min.js"></script>-->
 	  <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
       <script type="text/javascript" src="fullcalendar/fullcalendar.min.js"></script>
       <script type="text/javascript" src="fullcalendar/gcal.js"></script>
@@ -19,6 +19,25 @@
 	  
       <script type="text/javascript">
          $(document).ready(function() {
+		     
+	var $win = $(window);
+	var visible = true;
+	processScroll()
+    $win.on('scroll', processScroll);
+	$('#dismiss').on('click',function(e) {e.preventDefault(); $('.fixed-footer').fadeOut(200,function() {$(this).css({"visibility":"hidden"});});});
+	var height = $(document).height() / 2;
+    function processScroll() {
+      var i, scrollTop = $(window).scrollTop()
+      if (scrollTop >= height && visible) {
+			$('.fixed-footer').fadeOut();
+			visible = false;
+	  } else {
+	  if(scrollTop < height && !visible) {
+		  $('.fixed-footer').fadeIn();
+		  visible = true;
+	  }
+	  }
+    }
          	$('blockquote').quovolver();
          	$('#calendar').fullCalendar({
          contentHeight:600,
@@ -51,6 +70,18 @@
       </script>
    </head>
    <body style="background-color:#888;">
+	<div class="fixed-footer container-fluid" style="background-color:#eee;position:fixed; width:100%; bottom:0;z-index:10000;box-shadow:0 0 10px #888;height:160px;padding:20px;box-sizing:border-box;opacity:.95">
+		<div class="row-fluid">
+			<div class="span12" style="position:relative">
+			<div style="position:absolute;right:0;top:0;font-size:25px;"><a class="greylink" id="dismiss" href="">&times;</a></div>
+			<h1><i class="icon-warning-sign"></i> excuse the mess <small>site redesign in progress</small></h1>
+			<div class="progress progress-striped active">
+				<div class="bar" style="width: 40%;"></div>
+			</div>
+			<h4 style="color:rgb(100,100,100);"><i class="icon-magic"></i> there's some major magic happening around here...</h4>
+			</div>
+		</div>
+	</div>
       <div class="navbar navbar-fixed-top navbar-inverse">
          <div class="navbar-inner">
             <div class="container-fluid">
@@ -171,7 +202,7 @@
 				</form>
 				  </div>
 				  <div class="box box-inner box-red sm"><h4><i class="icon-globe"></i> social media <small>connect with us</small></h4>
-				  <div class="row-fluid" style="">
+				  <div class="row-fluid" style="text-align:center;">
 					  <div class="span3 socialmedia">
 					  <div class="icon-row" style=""> 
 									 <a class="btn btn-danger" style="width:10px;"><i class="icon-google-plus"></i></a>								 

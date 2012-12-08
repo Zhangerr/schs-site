@@ -79,7 +79,7 @@ margin-top:20px;
 	background-color:rgb(170,170,170);
 }
 .box-emphasis {
-box-shadow:0 0 15px #333;
+box-shadow:0 0 15px #888;
 }
 .btn-box {
 border-radius:0px;
@@ -185,6 +185,13 @@ padding:0px;
 .dsktop {
 padding:0 20px;
 }
+.greylink {
+color:rgb(150,150,150);
+}
+.greylink:hover {
+text-decoration:none;
+color:rgb(50,50,50);
+}
 blockquote p::before, blockquote p::after{
 content:"\"";
 }	
@@ -222,7 +229,9 @@ font-family:'Droid Sans', sans-serif;
 		padding-left:0px;
 		padding-right:0px;
 	}
-
+	.fixed-footer {
+	visibility:hidden;
+	}
 	.icon-row {
 	display:inline;
 	}
