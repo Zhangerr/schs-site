@@ -1,0 +1,212 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+  <head>
+    <meta name="generator" content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
+    <meta charset="UTF-8" />
+    <title>SCHS Web Design</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="fullcalendar/fullcalendar.css" />
+    <link rel="stylesheet" type="text/css" href="fullcalendar/fullcalendar.print.css" media="print" />
+    <link rel="stylesheet" href="css/main-style.css" />
+    <!--<script type="text/javascript" src="jquery/jquery-ui-1.8.23.custom.min.js"></script>-->
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css' />
+    <script type="text/javascript" src="fullcalendar/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="fullcalendar/gcal.js"></script>
+    <script type="text/javascript" src="js/jquery.quovolver.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+  </head>
+  <body>
+    <!--<div class="fixed-footer container-fluid">
+      <div class="row-fluid">
+        <div class="span12" style="position:relative">
+          <div style="position:absolute;right:0;top:0;font-size:25px;">
+            <a class="greylink" id="dismiss" href="">&times;</a>
+          </div>
+          <h1>
+          <i class="icon-warning-sign"></i> excuse the mess 
+          <small>site redesign in progress</small></h1>
+          <div class="progress progress-striped active">
+            <div class="bar" style="width: 40%;"></div>
+          </div>
+          <h4 style="color:rgb(100,100,100);">
+          <i class="icon-magic"></i> there's some major magic happening around here...</h4>
+        </div>
+      </div>
+    </div>
+    --> <div class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <div class="row-fluid">
+            <div class="span10 offset1">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span> 
+            <span class="icon-bar"></span> 
+            <span class="icon-bar"></span></a> 
+            <a class="brand" href="#" style="font-weight:bold;font-family:'Droid Sans'">SCHS Web Design</a>
+            <div class="nav-collapse collapse">
+              <ul class="nav">
+                <li class="active">
+                  <a href="/">
+                  <span class="icon-home"></span> Home</a>
+                </li>
+                <li>
+                  <a href="resources.html">
+                  <span class="icon-list"></span> Resources</a>
+                </li>
+                <li>
+                  <a href="http://code.google.com/p/schs-site/source/list">
+                  <span class="icon-tasks"></span> Changelog</a>
+                </li>
+                <li>
+                  <a href="">
+                  <i class="icon-group"></i> About</a>
+                </li>
+                <li>
+                  <a href="">
+                  <i class="icon-group"></i> Blog</a>
+                </li>
+              </ul>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+   <div class="container-fluid" style="background-image:url('img/navy_blue.png');box-shadow: inset 0 -15px 15px -15px #000;">
+      <div class="row-fluid">
+        <div class="span10 offset1 logo" style="position:relative;">
+          <!--http://puu.sh/1d4Qv-->
+          <img class="img-rounded" style="display:inline;height:200px; margin:auto;" alt="The Web Design Club" src="img/logo.png" />
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid content">
+      <div class="row-fluid">
+        <div class="span10 offset1" id="content-box">
+		<br />
+          <div class="box box-red">
+		  <div class="box-inner">
+		  <h1><i class="icon-flag" style="color:#BD362F"></i> Resources <small>for your convenience</small></h1>
+		  <h3>HTML Editors</h3>
+		  <h5>It is <em>highly</em> recommended you use the <a href="http://code.google.com/p/zen-coding/">zen coding</a> plugin for all of the following editors.</h5>
+		  <table class="table table-hover">
+			<thead><tr>
+				<th><i class="icon-edit"></i> Editor</th>
+				<th><i class="icon-comment-alt"></i> Description</th>
+			</tr>
+			</thead>
+			<tbody>
+		  	<tr>
+		  		<td><a href="http://notepad-plus-plus.org/">Notepad++</a></td>
+				<td> (Windows only, free as in "free beer" and "free speech"!)</td>
+
+		  	</tr>
+			<tr>
+				<td><a href="http://www.sublimetext.com/">Sublime Text</a> </td>
+				<td>(Commercial but indefinite free evaluation, available for all OSes [yes even you linux people have a suggestion but the stock gnome one is good enough])</td>				
+			</tr>
+			<tr>
+				<td><a href="http://www.activestate.com/komodo-edit">Komodo Edit</a></td>
+				<td>Another cross-platform editor that has the nice ftp/sftp features of notepad++, and compatible with zen coding.</td>
+			</tr>
+			</tbody>
+		  </table>
+		  <span class="label label-info">Note:</span> Any other text editors mentioned on the zen-coding page that it supports is probably half decent too!
+		  <h3>Educational</h3>
+		  <table class="table table-hover">
+		  	<thead>
+			<tr>
+				<th><i class="icon-edit"></i> Editor</th>
+				<th><i class="icon-comment-alt"></i> Description</th>
+			</tr>
+		  	</thead>
+		  	<tbody>
+				<tr>
+		  			<td><a href="https://www.google.com/calendar/embed?src=MGQ0M3FiMnV1NHF2MGd2dGlkdjdnMnJldm9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&gsessionid=ytKCNktSGuU8-Q-mSPnopA">Club Agenda</a></td>
+		  			<td>A google calendar on upcoming lessons. Alternatively, you can view the one embedded on the main page.</td>
+		  		</tr>
+		  		<tr>
+		  			<td><a href="https://developer.mozilla.org/en-US/">Mozilla Developer Network (MDN)</a></td>
+		  			<td>A resource from the creators of firefox (mozilla) that is pretty decent.</td>
+		  		</tr>
+		  		<tr>
+		  			<td><a href="http://reference.sitepoint.com/html">sitepoint</a></td>
+		  			<td>An excellent reference for tags and css properties, especially because it gives browser compatibility. Refer to this over w3schools anyday.</td>
+		  		</tr>
+		  		<tr>
+		  			<td><a href="http://mrbuzbee.com/">mrbuzbee</a></td>
+		  			<td>As strange as the title of the website is, this is where I get the lessons for our agenda. Highly worth reading ahead if you have time.</td>
+		  		</tr>
+		  		<tr>
+		  			<td><a href="http://dev.opera.com/articles/view/1-introduction-to-the-web-standards-cur/#toc">Opera Developer Network</a></td>
+		  			<td>Opera is another browser that is decent but has a much smaller presence. They, however, have excellent resources on beginner and intermediate web design.</td>
+		  		</tr>
+		  		<tr>
+		  			<td><a href="http://www.w3.org/community/webed/wiki/HTML/Training">W3</a></td>
+		  			<td>w3 is the governing body over HTML and CSS standards (plus a bunch of other stuff) so their resources are a bit more heavy but reading the actual specification for a language can be very enlightening at higher levels.</td>
+		  		</tr>
+				<tr>
+					<td><a href="http://ureddit.com/">University of Reddit</a></td>
+					<td>On a slight tangent, University of Reddit has excellent free courses for many subjects but also has many decent web development courses. In fact, the agenda we're following <strong>is</strong> one of these.</td>
+				</tr>
+		  	</tbody>
+		  </table>
+		  <h3>Miscellaneous</h3>
+		  <table class="table table-hover">
+			<thead>
+			<tr>
+				<th><i class="icon-edit"></i> Editor</th>
+				<th><i class="icon-comment-alt"></i> Description</th>
+			</tr>
+			</thead>
+		  	<tbody>
+			<tr>
+				<td><a href="">Mercurial Tutorial</a></td>
+				<td>A short tutorial I wrote on mercurial, which I initially intended we would use to collaborate on projects.</td>
+			</tr>
+			<tr>
+				<td><a href="">Kuler</a></td>
+				<td>Useful utility made by Adobe that allows easy color paletting (presets and user submitted ones)</td>
+			</tr>
+			<tr>
+				<td><a href="">jsfiddle</a></td>
+				<td>Very useful website that allows you to write html snippets and run it in browser. Please submit all work to me using this.</td>
+			</tr>
+			<tr>
+				<td><a href="">stackoverflow</a></td>
+				<td>A useful Q&A site that you can use to ask most programming questions (including web design) if I'm not available.</td>
+			</tr>
+			<tr>
+				<td><a href=""></a></td>
+				<td></td>
+			</tr>
+			</tbody>
+		  </table>
+		  </div>
+		  </div>
+          </div>
+      </div>
+    </div>
+    <div class="container-fluid footer" style="background-image:url('img/stressed_linen.png');">
+      <div class="row-fluid" style="margin-top:20px;">
+        <div class="span10 offset1" style="height:100px;color:#aaa">
+        <a class="btn btn-danger" style="width:10px;">
+          <i class="icon-google-plus"></i>
+        </a> 
+        <a class="btn btn-info" style="width:10px;">
+          <i class="icon-twitter" style="position:relative;left:-1px;"></i>
+        </a> 
+        <a class="btn btn-primary" style="width:10px;">
+          <i class="icon-facebook"></i>
+        </a> 
+        <a class="btn btn-success" style="width:10px;">
+          <i class="icon-github" style="position:relative;left:-1px;"></i>
+        </a>
+        <div style="margin-top:20px;">&copy; The SCHS Web Design Club 2012 | All rights reserved | Created with Bootstrap and FullCalendar</div></div>
+      </div>
+    </div>
+  </body>
+</html>
