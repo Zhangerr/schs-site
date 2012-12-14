@@ -10,7 +10,7 @@ box-sizing: border-box;
 .box {
 background-color:#eee;
 /*padding:20px;*/
-//border:1px #aaa solid;
+/*border:1px #aaa solid;*/
 box-shadow:0 0 5px rgba(0, 0, 0, 0.2);
 position:relative;
 margin-bottom:20px;
@@ -29,21 +29,24 @@ margin-bottom:20px;
 .pricing .box {
 background-color:white;
 }
+/*transition all breaks the calendar width for some reason (guessing it's something to do with how jquery calculates height)*/
 a {
-transition:all .3s;
--moz-transition:all .3s;
--webkit-transition:all .3s;
--o-transition:all .3s;
-padding:0 1px;
+transition-property: color, background-color;
+transition-duration: 0.3s;
+-moz-transition-property: color, background-color;
+-moz-transition-duration: 0.3s;
+-webkit-transition-property: color, background-color;
+-webkit-transition-duration: 0.3s;
+-o-transition-property: color, background-color;
+-o-transition-duration: 0.3s;
+
+/*padding:0 1px;*/ /*breaks the calendar*/
 }
 
 a:hover{
 background-color:rgb(241, 49, 49);
 color:rgb(230,230,230);
 text-decoration:none;
-}
-ol, ul {
-
 }
 .feature-list {
 list-style:none;
@@ -61,7 +64,7 @@ padding:0px;
 	font-size:16px;
 }
 .box::before {
-height:5px;
+height:8px;
 /*background-color:#BD362F;*/
 width:100%;
 content: "";
@@ -69,6 +72,16 @@ position:absolute;
 top:0;
 left:0;
 z-index:100;
+}
+.box::after {
+position:absolute;
+
+top:8px;
+left:4%;
+border-width:10px;
+border-style:solid;
+content: "";
+z-index:101;
 }
 .logo {
 margin-top:20px;
@@ -82,14 +95,26 @@ margin-top:20px;
 	width:5px;
 	background-color:rgb(70,130,180);
 }
+.box-red::after {
+border-color:#BD362F transparent transparent transparent;
+}
 .box-red::before {
 	background-color:#BD362F;
+}
+.box-blue::after {
+border-color:rgb(70,130,180) transparent transparent transparent;
 }
 .box-blue::before {
 	background-color:rgb(70,130,180);
 }
+.box-green::after {
+border-color:#57BD2F transparent transparent transparent;
+}
 .box-green::before {
 	background-color:#57BD2F;
+}
+.box-orange::after {
+border-color:#BD842F transparent transparent transparent;
 }
 .box-orange::before {
 	background-color:#BD842F;
@@ -119,7 +144,7 @@ z-index: 10;
 overflow:visible;
 position:absolute;
 top:20px;
-left:0px;
+left:0;
 right:0; /*this actually stretches it to the right*/
 /*box-shadow:0px 0px 5px rgba(0,0,0,1);*/
 /*width:100%; this actually prevents it from elongating*/
@@ -128,19 +153,20 @@ right:0; /*this actually stretches it to the right*/
 box-sizing: border-box;
 text-shadow:#333 0 -1px 0;
 }
+
 ::selection {
 background-color:orange;
 color:white;
 }
+
 .banner::after {
 border-color: transparent #006666 transparent transparent;
 border-style: solid;
 border-width: 0px 20px 20px 0px;
-
 content: "";
 display: block;
 left:0;
-margin: 0px 0 0 0px;
+margin: 0;
 position:absolute;
 z-index: 0;
 }
@@ -163,7 +189,6 @@ border:1px solid #ddd;
 border-color:#CA4F4F #BE4242 #A73A3A;
 color:#fff;
 text-shadow:none;
-
 background: #ff9393;
 background: -moz-linear-gradient(top, #ff9393 0%, #e55b5e 5%, #c95052 100%);
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff9393), color-stop(5%,#e55b5e), color-stop(100%,#c95052));
@@ -174,15 +199,6 @@ background: linear-gradient(to bottom, #ff9393 0%,#e55b5e 5%,#c95052 100%);
 text-shadow:#A73A3A 0 -1px 0;
 box-shadow:rgba(0,0,0,0.3) 0 1px 3px;
 }
-/*.best-value::before {
-content:"Best \r\nValue";
-position:absolute;
-left:-10px;
-top:-10px;
-z-index:999;
-border-radius:50%;
-background-color:blue;
-}*/
 .banner::before {
 border-color: transparent transparent transparent #006666;
 border-style: solid;
@@ -216,15 +232,29 @@ text-decoration:none;
 color:rgb(50,50,50);
 background-color:transparent;
 }
+.buffer {
+margin-top:50px;
+}
+
+.calendar-box {
+text-align:center;
+}
 blockquote p::before, blockquote p::after{
 content:"\"";
 }	
 .sm .btn {
 margin-bottom:2px;
 }
+.plans.content { /*increase specificity*/
+background-color:rgba(250,250,250,.95);
+border-top:1px solid rgba(0,0,0,0.35);
+border-bottom:1px solid rgba(0,0,0,0.35);
+}
+
 .content {
 padding-bottom:30px;background-color:#DDD;
 }
+
 .content-main {
 box-shadow: inset 0 -15px 15px -15px #333;
 }
