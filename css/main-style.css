@@ -170,7 +170,11 @@ margin: 0;
 position:absolute;
 z-index: 0;
 }
-
+#myCarousel img {
+  width: auto;
+  height: 500px;
+  
+}
 .best-value {
 position:absolute;
 left:-20px;
@@ -255,7 +259,19 @@ border-bottom:1px solid rgba(0,0,0,0.35);
 padding-bottom:30px;background-color:#DDD;
 
 }
-
+/*life saver*/
+.item {
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+padding:5px;
+}
+/*jk this is the real lifesaver*/
+.item img {
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
 .content-main {
 box-shadow: inset 0 -15px 15px -15px #333;
 }
@@ -313,6 +329,11 @@ background-color:#eee;position:fixed; width:100%; bottom:0;z-index:10000;box-sha
 	}
 	#calendar {
 	display:none;
+	}
+	#myCarousel img {
+	  width: auto;
+	  height: 225px;
+	  
 	}
 }
 @media (min-width:768px) and (max-width:979px){
