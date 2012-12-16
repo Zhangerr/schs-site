@@ -9,7 +9,7 @@
 };
 $(document).ready(function() {
 	$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?format=json&tags=astronomy&jsoncallback=?", function(data){for(var i in data.items) {
-	$("#myCarousel .carousel-inner").append('<div class="item{0}"><img class="img-polaroid" style="box-shadow:0 0 10px #000" src="{1}" /></div>'.format((i == 0? " active" : ""), data.items[i].media.m.replace('_m','')));
+	$("#myCarousel .carousel-inner").prepend('<div class="item{0}"><img class="img-polaroid" style="box-shadow:0 0 10px #000" src="{1}" /></div>'.format((i == 0? " active" : ""), data.items[i].media.m.replace('_m','')));
 	//$("#myCarousel .carousel-inner .item").first().addClass("active"); activates after page loads, no bueno
 	
 	}});
