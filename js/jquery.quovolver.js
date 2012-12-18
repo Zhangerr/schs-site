@@ -21,7 +21,7 @@
 		var	quote = $(this),
 			firstQuo = $(this).filter(':first'),
 			lastQuo = $(this).filter(':last'),
-			wrapElem = '<div id="quote_wrap"></div>';
+			wrapElem = '<div id="quote_wrap" style="margin-bottom:20px;"></div>';
 		
 		// Wrap the quotes
 		$(this).wrapAll(wrapElem);
@@ -39,10 +39,10 @@
 			// Set required hight and element in variables for animation
 			if($(lastQuo).is(':visible')) {
 				var nextElem = $(firstQuo);
-				var wrapHeight = $(nextElem).height();
+				var wrapHeight = $(nextElem).outerHeight();
 			} else {
 				var nextElem = $(quote).filter(':visible').next();
-				var wrapHeight = $(nextElem).height();
+				var wrapHeight = $(nextElem).outerHeight();
 			}
 			
 			// Fadeout the quote that is currently visible
