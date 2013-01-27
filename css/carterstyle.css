@@ -20,6 +20,10 @@
 	#sidebar {
 	position:fixed;
 	margin:0;
+	box-shadow:0 0 10px #000;
+	height:100%;
+	background-image:url('../img/stressed_linen.png');
+	-webkit-transition:width 1s ease-in-out;
 	}
 	.icon-nav {
 	border-left:3px solid #ccc;
