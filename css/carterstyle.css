@@ -1,0 +1,61 @@
+﻿	/* USE LESS OR SASS */
+	body {
+	font-family:"Droid Sans",Tahoma,sans-serif;
+	/*background-color:#333;*/
+	color:white;
+	height:100%;
+	background-image:url('../img/pw_maze_black.png');
+	}
+	html {
+	height:100%;
+	}
+	* {
+	box-clipping:border-box;
+	}
+	.span12 {
+	padding:0;
+	margin:0;
+	position:absolute;
+	}
+	.icon-nav > h1 {
+	border-bottom:solid 1px #888;
+	}
+	.icon-nav > h1:last-child {
+	border-bottom:none;
+	}
+	.icon-nav > h1 > i:hover{
+	color:red;
+	}
+	#expand {
+	position:absolute;top:50%;height:100px;width:30px;font-size:40px;padding-top:80px;border-radius:0px;margin-top:-93px;
+	}
+	.engage{
+	right:-20px;
+	}
+	.engage::before{
+	content:'►';
+	}
+	.disengage {
+	right:0px;
+	}
+	.disengage::before {
+	content:'◄';
+	}
+	.span4 {
+	position:relative;
+	}
+	a {
+	color:rgb(27, 151, 221)
+	}
+	a:hover {
+	color:rgb(0, 130, 200)
+	}
+	[class^="icon-"] {
+	-webkit-transition:all 0.5s;
+	}
+	/*[class^="icon-"]:hover {
+	color:purple;
+	}*/
+	/*h3:hover {
+	color:steelblue;
+	}*/
