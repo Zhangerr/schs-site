@@ -1,4 +1,4 @@
-﻿	/* USE LESS OR SASS */
+﻿	/* USE LESS OR SASS, progressive enhancement or graceful degredation. */
 	body {
 	font-family:"Droid Sans",Tahoma,sans-serif;
 	/*background-color:#333;*/
@@ -12,14 +12,21 @@
 	* {
 	box-clipping:border-box;
 	}
-	.span12 {
+	#sidebar.span12 {
 	padding:0;
 	margin:0;
-	position:absolute;
+	/*position:absolute;*/
+	}
+	#sidebar {
+	position:fixed;
+	margin:0;
 	}
 	.icon-nav > h1 {
 	border-bottom:solid 1px #888;
 	font-size:37px;
+	}
+	.carousel-inner img {
+		margin:auto;
 	}
 	.icon-nav > h1:last-child {
 	border-bottom:none;
@@ -29,9 +36,17 @@
 	}
 	#expand {
 	position:absolute;top:50%;height:100px;width:30px;font-size:40px;padding-top:80px;border-radius:0px;margin-top:-93px;
+	background-image:none;
+	border:1px solid #333;
+	box-shadow:none;
+	background-color:#000;
+	
 	}
 	.engage{
 	right:-20px;
+	}
+	.engage::before,.disengage::before{
+	color:#999;
 	}
 	.engage::before{
 	content:'►';
